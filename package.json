@@ -1,6 +1,6 @@
 {
   "name": "tinymt",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Random Number Generator",
   "main": "index.js",
   "scripts": {
@@ -18,7 +18,6 @@
     "twister"
   ],
   "author": "francoislaberge@gmail.com",
-  "license": "LICENSE.txt",
   "bugs": {
     "url": "https://github.com/francoislaberge/tinymt/issues"
   },
