@@ -1,0 +1,26 @@
+{
+  "name": "tinymt",
+  "version": "0.0.1",
+  "description": "Random Number Generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/francoislaberge/tinymt.git"
+  },
+  "keywords": [
+    "random",
+    "generator",
+    "tinymt",
+    "mersenne",
+    "twister"
+  ],
+  "author": "francoislaberge@gmail.com",
+  "license": "LICENSE.txt",
+  "bugs": {
+    "url": "https://github.com/francoislaberge/tinymt/issues"
+  },
+  "homepage": "https://github.com/francoislaberge/tinymt"
+}
