@@ -1,9 +1,22 @@
 # Overview
-This will be a javascript modele for generating random numbers based on the TinyMT algorithm. It's benefit over normal
+This will be a javascript module for generating pseudo random numbers based on the TinyMT algorithm. It's benefit over normal
 Messener Twister generators is it's state space is very small. This is useful for use cases where you want to backup, clone, or branch
-an existing TinyMT instance.
+an existing ```arbitrary.Generator``` instance.
 
-Originally based off of: [github.com/jj1bdx/TinyMT](https://github.com/jj1bdx/TinyMT)
+# Installation
+
+      npm install arbitrary
+
+# Usage 
+
+## Basic
+
+```js
+var arbitrary = require('arbitrary');
+
+console.log(arbitrary.float());
+console.log(arbitrary.integer());
+```
 
 # Project Goals
  - Be able to easily clone a generator instance
@@ -14,10 +27,6 @@ Originally based off of: [github.com/jj1bdx/TinyMT](https://github.com/jj1bdx/Ti
    - Browserfy
    - Require
    - Bower
-
-# Installation
-
-      npm install arbitrary
 
 # Todo
 
@@ -31,3 +40,7 @@ Originally based off of: [github.com/jj1bdx/TinyMT](https://github.com/jj1bdx/Ti
     - [ ] Should we start guaranteeing backward compatible determism? (This might be too high of a constraint)
   - [ ] Give a [list of references](http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/ARTICLES/earticles.html) and history lessong for the general MT work as well as the TinyMT implementation.
 
+
+# Credits
+
+Originally based off of: [github.com/jj1bdx/TinyMT](https://github.com/jj1bdx/TinyMT)

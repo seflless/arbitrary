@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Arbitrary Examples</title>
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+
+  <script src="../arbitrary.js" type="text/javascript"></script>
+  <script>
+    var cvs = document.getElementById('canvas'),
+        ctx = cvs.getContext('2d');
+
+    cvs.width = 400;
+    cvs.height = 400;
+
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, cvs.width, cvs.height);
+
+    var i, x, y;
+    ctx.fillStyle = 'white';
+    for(i = 0; i<1000; i++){
+      x = Math.floor(arbitrary.float()*cvs.width);
+      y = Math.floor(arbitrary.float()*cvs.height);
+
+      ctx.fillRect(x, y, 1, 1);
+    }
+  </script>
+</body>
+</html>

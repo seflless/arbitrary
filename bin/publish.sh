@@ -1,0 +1,1 @@
+echo "TODO: Make an automated script for publishing the module and bumping the version and pushing to github"

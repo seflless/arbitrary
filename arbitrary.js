@@ -1,6 +1,5 @@
 (function(){
 'use strict';
-
   // Constants
   var MIN_LOOP = 8,
       PRE_LOOP = 8,
@@ -11,41 +10,50 @@
       TINYMT32_MUL = 1.0 / 4294967296;
 
 function Generator(seed) {
-  // If a seed was not provided use the current time as the seed
-  seed = seed ? seed: (new Date()).getTime();
-
-  // Remember the seed
-  // TODO: We should remove this soon enough.
-  this.seed = seed ? seed: (new Date()).getTime();
-
-  // TODO: Understand these parameters more. We're hard coding them for now.
-  // Need to read through the tinymt academic paper.
-  this.mat1 = 0x8f7011ee;
-  this.mat2 = 0xfc78ff1f;
-  this.tmat = 0x3793fdff;
-
-  this.status = [
-    seed,
-    this.mat1,
-    this.mat2,
-    this.tmat
-  ];
-  
-  var i;
-  for(i = 1; i < MIN_LOOP; i++) {
-    this.status[i & 3] ^= i + 1812433253
-      * (this.status[(i - 1) & 3]
-         ^ (this.status[(i - 1) & 3] >> 30));
-    }
-  
-  period_certification.apply(this);
-
-  for(i = 0; i < PRE_LOOP; i++) {
-    tinymt32_next_state.apply(this);
+  // If the seed is set to null then don't seed it. This is useful
+  // for when we want to create a new Generator instance and create it
+  // from a deserealization and not waste time on the seed logic
+  if(seed !== null) {
+    this.seed();  
   }
 }
 
 Generator.prototype = {
+
+  seed: function(seed) {
+    // If a seed was not provided use the current time as the seed
+    seed = seed ? seed: (new Date()).getTime();
+
+    // Remember the seed
+    // TODO: We should remove this soon enough.
+    this.seed = seed ? seed: (new Date()).getTime();
+
+    // TODO: Understand these parameters more. We're hard coding them for now.
+    // Need to read through the tinymt academic paper.
+    this.mat1 = 0x8f7011ee;
+    this.mat2 = 0xfc78ff1f;
+    this.tmat = 0x3793fdff;
+
+    this.status = [
+      seed,
+      this.mat1,
+      this.mat2,
+      this.tmat
+    ];
+    
+    var i;
+    for(i = 1; i < MIN_LOOP; i++) {
+      this.status[i & 3] ^= i + 1812433253
+        * (this.status[(i - 1) & 3]
+           ^ (this.status[(i - 1) & 3] >> 30));
+      }
+    
+    period_certification.apply(this);
+
+    for(i = 0; i < PRE_LOOP; i++) {
+      tinymt32_next_state.apply(this);
+    }
+  },
 
   float: function(){
         // max defaults to 1.0 if not provided
@@ -150,11 +158,35 @@ function tinymt32_generate_float() {
     return tinymt32_temper.apply(this) * TINYMT32_MUL + 0.5;
 }
 
+
 // Create a global generator that people can use by default.
-window.arbitrary = new Generator();
+var arbitrary = new Generator();
 
 // Make the Generator constructor available for those wanting
 // to manage their own instances.
-window.arbitrary.Generator = Generator;
+arbitrary.Generator = Generator;
+
+/* --------------------------------
+ * Support multiple module formats
+ * --------------------------------*/
+
+// CommonJS module is defined
+if (typeof module !== 'undefined' && module && module.exports) {
+  module.exports = arbitrary;
+}
+// Require.js 
+else if (typeof define === 'function' && define.amd) {
+  define(function (require, exports, module) {
+    return arbitrary;
+  });
+}
+// Good old regular 
+else if(typeof window !== 'undefined') {
+  window.arbitrary = arbitrary;
+}
+// wat!?
+else {
+  throw new Error('Unknown environment');
+}
 
 })();
