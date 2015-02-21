@@ -15,11 +15,19 @@ Originally based off of: [github.com/jj1bdx/TinyMT](https://github.com/jj1bdx/Ti
    - Require
    - Bower
 
+# Installation
+
+      npm install arbitrary
+
 # Todo
 
   - [ ] Explain the benefits better. Is performance reason enough? Probably, espcially in Javascript.
   - [x] Reserve ```tinymt``` npm module name
   - [ ] Try porting to javascript using emscripten
   - [ ] If emscripten doesn't work out well or at all, port it manually to Javascript.
+  - [ ] Write tests
+    - [ ] Make sure integer range parameters make sense
+    - [ ] Sanity check distribution, performance, and anything else that adds integrity
+    - [ ] Should we start guaranteeing backward compatible determism? (This might be too high of a constraint)
   - [ ] Give a [list of references](http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/ARTICLES/earticles.html) and history lessong for the general MT work as well as the TinyMT implementation.
 
