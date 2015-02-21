@@ -30,6 +30,7 @@ console.log(arbitrary.integer());
 
 # Todo
 
+  - [ ] Add noise, shuffle, serialize, deserialize, functions. Also look for my other notes.
   - [ ] Explain the benefits better. Is performance reason enough? Probably, espcially in Javascript.
   - [x] Reserve ```tinymt``` npm module name
   - [ ] Try porting to javascript using emscripten
