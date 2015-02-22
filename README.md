@@ -46,7 +46,8 @@ console.log(generate.sample([1, 2, 3, 4], 2));
 
 # Todo
 
-  - [ ] Add noise, shuffle, serialize, deserialize, functions. Also look for my other notes.
+  - [ ] Add noise, shuffle, serialize(getState() instead?), deserialize(setState() instead?), functions. Also look for my other notes.
+  - [ ] Should we add support for generating higher dimensional and compound objects like: Vector2D, Vector3D, rgb (compatible with svg/canvas/dom), rgba(compatible with svg/canvas/dom), normal2D, normal3D, quaternion, etc?
   - [ ] Checkout other PRNG libraries.
     - [Python's](https://docs.python.org/2/library/random.html#random.getstate)
   - [ ] Explain the benefits better. Is performance reason enough? Probably, espcially in Javascript.

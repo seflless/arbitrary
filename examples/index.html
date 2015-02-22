@@ -17,13 +17,33 @@
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, cvs.width, cvs.height);
 
-    var i, x, y;
-    ctx.fillStyle = 'white';
-    for(i = 0; i<10000; i++){
-      x = arbitrary.integer(20, cvs.width-20);
-      y = arbitrary.integer(20, cvs.height-20);
+    var starCount = 1000,
+        i;
+    for(i = 0; i<starCount; i++){
+      drawCircle(
+        arbitrary.integer(cvs.width),
+        arbitrary.integer(cvs.height),
+        arbitrary.integer(1,2),
+        'white'
+      );
+    }
 
-      ctx.fillRect(x, y, 1, 1);
+    // Draw the earth
+    drawCircle(cvs.width/2, cvs.height+700, 800, '#0020C2');
+
+    // Draw the moon
+    drawCircle(
+      arbitrary.integer(60, cvs.width-60),
+      arbitrary.integer(60, cvs.height/3),
+      arbitrary.integer(20, 25),
+      'white' 
+    );
+
+    function drawCircle(centerX, centerY, radius, color) {
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+      ctx.fillStyle = color;
+      ctx.fill();
     }
   </script>
 </body>
