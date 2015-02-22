@@ -14,7 +14,7 @@ function Generator(seed) {
   // for when we want to create a new Generator instance and create it
   // from a deserealization and not waste time on the seed logic
   if(seed !== null) {
-    this.seed();  
+    this.seed();
   }
 }
 
@@ -23,10 +23,6 @@ Generator.prototype = {
   seed: function(seed) {
     // If a seed was not provided use the current time as the seed
     seed = seed ? seed: (new Date()).getTime();
-
-    // Remember the seed
-    // TODO: We should remove this soon enough.
-    this.seed = seed ? seed: (new Date()).getTime();
 
     // TODO: Understand these parameters more. We're hard coding them for now.
     // Need to read through the tinymt academic paper.
@@ -56,24 +52,92 @@ Generator.prototype = {
   },
 
   float: function(){
-        // max defaults to 1.0 if not provided
-    var max = arguments.length>=1 ? arguments[0] : 1.0,
-        // min defaults to 0.0 if not provided
-        min = arguments.length>=2 ? arguments[1] : 0.0,
-        value = tinymt32_generate_float.apply(this);
+    var min, max, value;
+
+    // If no min/max were provided range is [0.0, 1.0]
+    if(arguments.length === 0 ){
+      min = 0.0;
+      max = 1.0;
+    } 
+    // If only one parameter is passed, it's treated as the max.
+    // Range is [0.0, max]
+    else if(arguments.length === 1 ){
+      min = 0.0;
+      max = arguments[0];
+    }
+    // If min and max were provided
+    else if(arguments.length === 1 ){
+      min = arguments[0];
+      max = arguments[1];
+    }
+    
+    value = tinymt32_generate_float.apply(this);
     return value * (max-min) + min;
   },
 
   integer: function(){
-        // max defaults to 9007199254740992 if not provided
-        // This number was based on this Stackoverflow answer:
-        // http://stackoverflow.com/questions/307179/what-is-javascripts-highest-integer-value-that-a-number-can-go-to-without-losin#answer-11639621
-    var max = arguments.length>=1 ? arguments[0] : 9007199254740992,
-        // min defaults to 0 if not provided
-        min = arguments.length>=2 ? arguments[1] : 0,
-        value = tinymt32_generate_float.apply(this);
+    var min, max, value;
+
+    // If no min/max were provided range is [0.0, 1.0]
+    if(arguments.length === 0 ){
+      min = 0;
+      
+      // Max defaults to 9007199254740992 if not provided
+      // This number was based on this Stackoverflow answer:
+      // http://stackoverflow.com/questions/307179/what-is-javascripts-highest-integer-value-that-a-number-can-go-to-without-losin#answer-11639621
+      max = 1000000;
+    } 
+    // If only one parameter is passed, it's treated as the max.
+    // Range is [0.0, max]
+    else if(arguments.length === 1 ){
+      min = 0;
+      max = arguments[0];
+    }
+    // If min and max were provided
+    else if(arguments.length === 2 ){
+      min = arguments[0];
+      max = arguments[1];
+    }
+    
+    value = tinymt32_generate_float.apply(this);
     return Math.floor(value * (max-min) + min);
+  },
+
+  /*
+   * Note that for even rather small len(x), the total number of permutations of x is larger than the period of most random number generators; 
+   * this implies that most permutations of a long sequence can never be generated.
+   */
+  shuffle: function(array){
+    var output = array.slice(),
+        i, 
+        randomIndex, 
+        swap;
+
+    // Iterate through each element and swap it's location
+    // with another randomly selected element
+    for(var i = 0; i<output.length;i++){
+      randomIndex = this.integer(output.length-1);
+      swap = output[randomIndex];
+      output[randomIndex] = output[i];
+      output[i] = swap;
+    }
+
+    return output;
+  },
+
+  choice: function(array){
+    return array[this.integer(array.length-1)];
+  },
+
+  sample: function(array, k){
+    var output = [],
+        i;
+    for(i = 0; i<k; i++) {
+      output.push(this.integer(array.length-1));
+    }
+    return output;
   }
+
 };
 
 /*-----------------------------------

@@ -19,9 +19,9 @@
 
     var i, x, y;
     ctx.fillStyle = 'white';
-    for(i = 0; i<1000; i++){
-      x = Math.floor(arbitrary.float()*cvs.width);
-      y = Math.floor(arbitrary.float()*cvs.height);
+    for(i = 0; i<10000; i++){
+      x = arbitrary.integer(20, cvs.width-20);
+      y = arbitrary.integer(20, cvs.height-20);
 
       ctx.fillRect(x, y, 1, 1);
     }

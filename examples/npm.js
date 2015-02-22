@@ -1,8 +1,15 @@
-var arbitrary = require('../arbitrary.js'),
-    i, line = '';
+/*
+ * Test that it works as an node module
+ */
 
-for(i = 0; i<10; i++){
-  line+= arbitrary.float() + ' ';
-}
+var arbitrary = require('../arbitrary.js');
 
-console.log(line);
+console.log(arbitrary.float());
+
+console.log(arbitrary.integer());
+
+console.log(arbitrary.shuffle([1, 2, 3, 4]));
+
+console.log(arbitrary.choice([1, 2, 3, 4]));
+
+console.log(arbitrary.sample([1, 2, 3, 4], 2));
