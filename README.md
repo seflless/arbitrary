@@ -65,6 +65,7 @@ console.log(generate.sample([1, 2, 3, 4], 2));
   - [ ] Give a [list of references](http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/ARTICLES/earticles.html) and history lessong for the general MT work as well as the TinyMT implementation.
 
 
-# Credits
-
-Originally based off of: [github.com/jj1bdx/TinyMT](https://github.com/jj1bdx/TinyMT)
+# References
+  - [Mersenne Twister Home Page](http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/emt.html)
+  - [TinyMT is a new small-sized variant of Mersenne Twister (MT) introduced by Mutsuo Saito and Makoto Matsumoto in 2011](http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/TINYMT/index.html)
+  - C/C++ implementation: [github.com/jj1bdx/TinyMT](https://github.com/jj1bdx/TinyMT)
