@@ -16,6 +16,9 @@ var arbitrary = require('arbitrary');
 
 console.log(arbitrary.float());
 console.log(arbitrary.integer());
+console.log(arbitrary.shuffle([1, 2, 3, 4]));
+console.log(arbitrary.choice([1, 2, 3, 4]));
+console.log(arbitrary.sample([1, 2, 3, 4], 2));
 ```
 
 Manage your own instances:
@@ -26,6 +29,9 @@ var arbitrary = require('arbitrary'),
 
 console.log(generate.float());
 console.log(generate.integer());
+console.log(generate.shuffle([1, 2, 3, 4]));
+console.log(generate.choice([1, 2, 3, 4]));
+console.log(generate.sample([1, 2, 3, 4], 2));
 ```
 
 # Project Goals
