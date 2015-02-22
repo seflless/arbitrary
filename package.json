@@ -1,6 +1,6 @@
 {
   "name": "arbitrary",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Pseudo Random Number Generator",
   "main": "arbitrary.js",
   "scripts": {
