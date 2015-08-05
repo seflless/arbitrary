@@ -63,6 +63,7 @@ console.log(generate.sample([1, 2, 3, 4], 2));
     - [ ] Should we start guaranteeing backward compatible determism? (This might be too high of a constraint)
     - [ ] What about just general cross environment determinism (ie, same seed same outputs in every browser and node etc)
   - [ ] Give a [list of references](http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/ARTICLES/earticles.html) and history lessong for the general MT work as well as the TinyMT implementation.
+  - [ ] Read through: [PCG, A Family of Better Random Number Generators](http://www.pcg-random.org/)
 
 
 # References
