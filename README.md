@@ -1,5 +1,5 @@
 # Overview
-<a href="https://travis-ci.org/francoislaberge/arbitrary"><img alt="Build Status Images" src="https://travis-ci.org/francoislaberge/arbitrary.svg"></a>
+[![Build Status](https://travis-ci.org/francoislaberge/arbitrary.svg?branch=master)](https://travis-ci.org/francoislaberge/arbitrary)
 
 Javascript module for generating pseudo random numbers based on the TinyMT algorithm. It's benefit over normal
 Messener Twister generators is it's state space is very small (~8bytes). This is useful for use cases where you want to backup, clone, or branch
