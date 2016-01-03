@@ -6,6 +6,11 @@ describe('arbitrary', function() {
       assert(isInt(arbitrary.integer()), "wasn't an integer");
     });
   });
+  describe('#float()', function () {
+    it('should return an float', function () {
+      assert(isFloat(arbitrary.float()), "wasn't a float");
+    });
+  });
 });
 
 function isInt(n){
