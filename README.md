@@ -8,6 +8,9 @@ an existing ```arbitrary.Generator``` instance.
 # Installation
 
       npm install arbitrary
+      
+# New Section
+Blah BLah
 
 # Usage
 
