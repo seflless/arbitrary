@@ -1,5 +1,6 @@
 var assert = require('assert'),
     arbitrary = require('../arbitrary');
+    
 describe('arbitrary', function() {
   describe('#integer()', function () {
     it('should return an integer', function () {

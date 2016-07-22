@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Arbitrary Examples</title>
+</head>
+<body>
+    <script src="../lib/index.js" type="text/javascript"></script>
+
+    <script>
+        var pixel = 2;
+        generate1D('1D', 100);
+
+        function h4(title){
+            var h = document.createElement('h4');
+            h.innerHTML = title;
+            document.body.appendChild(h);
+            return h;
+        }
+
+        function canvas(width, height){
+            var canvas = document.createElement('canvas');
+            canvas.width = width;
+            canvas.height = height;
+            document.body.appendChild(canvas);
+            return canvas;
+        }
+
+        function generate1D(title, samples) {
+            h4(title);
+
+            var dim = samples * pixel;
+            var cvs = canvas(dim, dim);
+
+            for( var i = 0; i < samples; i++ ) {
+                var val = arbitrary.lcg();
+                console.log();
+            }
+        }
+
+        clear(canvas){
+            var ctx = canvas.getContext('2d');
+            ctx.fillStyle = 'black';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        }
+
+        rect(color, x, y, w, h){
+            var ctx = canvas.getContext('2d');
+            ctx.fillStyle = color;
+            ctx.fillRect(x, y, w, h);
+        }
+</script>
+</body>
+</html>
