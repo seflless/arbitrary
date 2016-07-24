@@ -3,6 +3,44 @@
 
 Generate random numbers.
 
+Search for algorithms with some or all of the following properties:
+  - algorithm is reversible (you can go back to a previous state given a current state)
+  - algorithm is random access (you can provide an index [0, 2^32) that generates a good random value)
+  - fast
+  - maximum period length for state bit size (ie 32 bit state should generate 2^32 unique values before looping again)
+  - lastly but less important: the usual ideal PRNG properties
+
+TODO:
+  - Explain each algorithm, cleanly and visually
+  - Keep looking into this:
+    - https://rosettacode.org/wiki/Random_number_generator_(included)#C.2B.2B
+  - These seems good
+    - https://www.npmjs.com/package/ivoire-one-of
+    - https://www.npmjs.com/package/random-js
+    - http://stackoverflow.com/questions/17625232/custom-linear-congruential-generator-in-javascript
+    - http://jsfiddle.net/AbdiasSoftware/7VmR9/12/
+    - https://bocoup.com/weblog/random-numbers
+        - https://gist.github.com/Protonk/5367430 (Gold it looks like)
+        - I really like the sound of the webkit invertible mapping generator
+            - https://en.wikipedia.org/wiki/T-function
+            - https://gist.github.com/Protonk/5367430#file-prng-js-L91-L109
+            - https://gist.github.com/Protonk/5367497 (includes link to C++ source)
+    - Near random access (Log(n) n being skipp amount)
+      - http://stackoverflow.com/a/38495314 (I believe this was mentioned in the above log too)
+    - This looks promising (Sounds like you can jump to any point to generated a value)
+      - http://stackoverflow.com/a/19508103
+      - Source: https://code.google.com/archive/p/javarng/source/default/source
+    - this too
+      - https://github.com/bobbaluba/rlcg
+
+
+  - Test (For each power of two bit range: 1, 2, 4, 8, 16, 32 bit range)
+    - First looping
+    - Coverage
+    - Uniformity
+    - Standard tests?
+      - https://en.wikipedia.org/wiki/Randomness_tests
+
 # Installation
 
       npm install arbitrary

@@ -1,7 +1,8 @@
-import lcg from './lcg';
+import {lcg, lcgIndexed} from './lcg';
 
 const arbitrary = {
-  lcg
+  lcg,
+  lcgIndexed
 };
 
 export default arbitrary;
