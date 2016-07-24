@@ -10,13 +10,13 @@ var algorithms = {
                 return val;
             },*/
             'arbitrary.lcg': arbitrary.lcg,
-            'arbitrary.lcgIndexed': (function(){
+            /*'arbitrary.lcgIndexed': (function(){
                 var index = 0;
                 return function(){
                     index++;
                     return arbitrary.lcgIndexed(index);
                 };
-            })(),
+            })(),*/
             'Math.random': function (){
                 return Math.floor( Math.random() * Math.pow(2,32) );
             },

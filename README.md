@@ -3,6 +3,16 @@
 
 Generate random numbers.
 
+Using LCG First
+  - Verify algorithm works at each range of values (no small walks because of integer precision issues)
+  - Make sure all math works as expected for u32, addition and multiplication operations need to wrap correctly
+    - Pretty sure multiplication blows past the precision needed when the state is near the top of the value range
+    - Also the addition of the increment should wrap in 32 bit space I believe (Actually maybe not)
+  - Add u32
+  - Add i32
+  - Add u32Range
+  - Add i32Range
+
 Search for algorithms with some or all of the following properties:
   - algorithm is reversible (you can go back to a previous state given a current state)
   - algorithm is random access (you can provide an index [0, 2^32) that generates a good random value)
@@ -32,6 +42,8 @@ TODO:
       - Source: https://code.google.com/archive/p/javarng/source/default/source
     - this too
       - https://github.com/bobbaluba/rlcg
+    - Reversible LCG
+      - http://stackoverflow.com/a/16630535
 
 
   - Test (For each power of two bit range: 1, 2, 4, 8, 16, 32 bit range)
