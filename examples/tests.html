@@ -34,6 +34,14 @@
             generate2D('2D (' + name +  ')', generator, samples2D, range2D, pixelSize);
         });
 
+        var samples2D = 255;
+        var range2D = 50;
+        algorithms.forEach( function(generator, name) {
+            randomWalk('randomWalk (' + name +  ')', generator, samples2D, range2D, pixelSize);
+        });
+
+
+
 /*
         function lcgGen(seed) {
             var state = seed;

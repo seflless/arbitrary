@@ -77,6 +77,23 @@ function generate2D(title, generator, samples, range, pixelSize) {
     }
 }
 
+function randomWalk(title, generator, samples, range, pixelSize) {
+    h4(title);
+
+    var cvs = canvas(range * pixelSize, range * pixelSize);
+
+    clear(cvs);
+
+    var x = Math.floor(range/2);
+    var y = Math.floor(range/2);
+    for( var i = 0; i < samples; i++ ) {
+        x+= generator() / Math.pow(2,32) * pixelSize - pixelSize/2;
+        y+= generator() / Math.pow(2,32) * pixelSize - pixelSize/2;
+
+        rect(cvs, 'rgb('+i+','+i+','+i+')', Math.floor(x) * pixelSize, Math.floor(y) * pixelSize, pixelSize, pixelSize);
+    }
+}
+
 function clear(cvs) {
     var ctx = cvs.getContext('2d');
     ctx.fillStyle = 'black';
