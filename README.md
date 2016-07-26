@@ -44,6 +44,13 @@ TODO:
       - https://github.com/bobbaluba/rlcg
     - Reversible LCG
       - http://stackoverflow.com/a/16630535
+    - Why is it difficult to write a good PRNG in javascript?
+      - https://github.com/nquinlan/better-random-numbers-for-javascript-mirror
+    - http://number-none.com/blow/blog/programming/2016/07/13/braid_particles_2.html
+      - https://marc-b-reynolds.github.io/shf/2016/04/19/prns.html
+    - https://github.com/davidbau/xsrand
+    - Looks very fast
+      - https://github.com/davidbau/xsrand/blob/master/xor128.js#L4
 
 
   - Test (For each power of two bit range: 1, 2, 4, 8, 16, 32 bit range)
