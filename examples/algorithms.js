@@ -26,6 +26,17 @@ function XorGen(seed) {
 
 var xorGen = new XorGen( Math.floor( Math.random() * Math.pow(2,32) ) );
 
+var shuffleMask = Math.floor(Math.random()*Math.pow(2,30));
+console.log('shuffleMask: '+shuffleMask);
+function shuffleBits( n ) {
+    // Mix with shuffleMask
+    n =
+        // mix higher 16 bits with lower 16bits
+        ( (0x7fff0000 & n ) >>> 15 ) ^ ( (0x00007fff & n ) << 15 );
+    n ^= shuffleMask;
+    return n;
+}
+
 var algorithms = {
         forEach: function(cb){
             Object.keys(algorithms.techniques).forEach( function(name){
@@ -69,9 +80,15 @@ var algorithms = {
                     return val;
                 }
             })(),
+            'shuffleBits': (function(){
+                var i = 0;
+                return function(){
+                    return shuffleBits(i++);
+                }
+            })(),
             'XorGen': function(){
-                var val = xorGen.next()*2;
-                console.log(val);
+                var val = xorGen.next();
+                //console.log(val);
                 return val;
             }
         }

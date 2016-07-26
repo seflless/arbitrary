@@ -51,7 +51,12 @@ TODO:
     - https://github.com/davidbau/xsrand
     - Looks very fast
       - https://github.com/davidbau/xsrand/blob/master/xor128.js#L4
-
+  - Bit operations subtlties
+    - https://stackoverflow.com/questions/14061999/why-does-0x80000000-1-in-javascript-produce-a-negative-value
+    - Learning a lot here:
+      - http://www.ecma-international.org/ecma-262/7.0/index.html#sec-binary-bitwise-operators-runtime-semantics-evaluation
+      - Use >>> where possible
+        - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators#Unsigned_right_shift
 
   - Test (For each power of two bit range: 1, 2, 4, 8, 16, 32 bit range)
     - First looping
