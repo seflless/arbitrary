@@ -1,7 +1,12 @@
 # Overview
-[![Build Status](https://travis-ci.org/francoislaberge/arbitrary.svg?branch=master)](https://travis-ci.org/francoislaberge/arbitrary)
+[![Build Status](https://api.travis-ci.org/francoislaberge/arbitrary.svg)
 
 Generate random numbers.
+
+  - More leads
+    - Goldmine in Google Closure library:
+      - https://github.com/google/closure-library/blob/master/closure/goog/math/long.js#L53
+    - https://en.wikipedia.org/wiki/Inversive_congruential_generator
 
 Using LCG First
   - Verify algorithm works at each range of values (no small walks because of integer precision issues)
@@ -12,6 +17,12 @@ Using LCG First
   - Add i32
   - Add u32Range
   - Add i32Range
+  - Make sure that the if we add a true random number generator that pulls from say Math.random() that we log a warning
+    to indicate that you should only use it once
+
+LESSONS LEARNED SO FAR
+  - Build everything with T-Functions (bijective operations on n-bit ring numbers)
+  - You could likely build many structured generators such as spiral, hilbert space, random full coverage 2D sample, etc
 
 Search for algorithms with some or all of the following properties:
   - algorithm is reversible (you can go back to a previous state given a current state)
@@ -20,11 +31,13 @@ Search for algorithms with some or all of the following properties:
   - maximum period length for state bit size (ie 32 bit state should generate 2^32 unique values before looping again)
   - lastly but less important: the usual ideal PRNG properties
 
+
 TODO:
   - Explain each algorithm, cleanly and visually
   - Keep looking into this:
     - https://rosettacode.org/wiki/Random_number_generator_(included)#C.2B.2B
   - These seems good
+    - https://www.npmjs.com/package/rng
     - https://www.npmjs.com/package/ivoire-one-of
     - https://www.npmjs.com/package/random-js
     - http://stackoverflow.com/questions/17625232/custom-linear-congruential-generator-in-javascript
@@ -33,6 +46,7 @@ TODO:
         - https://gist.github.com/Protonk/5367430 (Gold it looks like)
         - I really like the sound of the webkit invertible mapping generator
             - https://en.wikipedia.org/wiki/T-function
+              - https://eprint.iacr.org/2011/547.pdf
             - https://gist.github.com/Protonk/5367430#file-prng-js-L91-L109
             - https://gist.github.com/Protonk/5367497 (includes link to C++ source)
     - Near random access (Log(n) n being skipp amount)

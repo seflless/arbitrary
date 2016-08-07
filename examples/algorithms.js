@@ -1,41 +1,3 @@
-function XorGen(seed) {
-  var me = this;
-
-  // Set up generator function.
-  me.next = function() {
-    var t = me.x ^ (me.x << 11);
-    me.x = me.y;
-    me.y = me.z;
-    me.z = me.w;
-    return me.w ^= (me.w >> 19) ^ t ^ (t >> 8);
-  };
-
-  function init(me, seed) {
-    me.x = seed;
-    me.y = 0;
-    me.z = 0;
-    me.w = 0;
-    // Discard an initial batch of 64 values.
-    for (var k = 64; k > 0; --k) {
-      me.next();
-    }
-  }
-
-  init(me, seed);
-}
-
-var xorGen = new XorGen( Math.floor( Math.random() * Math.pow(2,32) ) );
-
-var shuffleMask = Math.floor(Math.random()*Math.pow(2,30));
-console.log('shuffleMask: '+shuffleMask);
-function shuffleBits( n ) {
-    // Mix with shuffleMask
-    n =
-        // mix higher 16 bits with lower 16bits
-        ( (0x7fff0000 & n ) >>> 15 ) ^ ( (0x00007fff & n ) << 15 );
-    n ^= shuffleMask;
-    return n;
-}
 
 var algorithms = {
         forEach: function(cb){
@@ -79,17 +41,6 @@ var algorithms = {
                     var val = Math.floor( mwc.rand() * Math.pow(2,32) );
                     return val;
                 }
-            })(),
-            'shuffleBits': (function(){
-                var i = 0;
-                return function(){
-                    return shuffleBits(i++);
-                }
-            })(),
-            'XorGen': function(){
-                var val = xorGen.next();
-                //console.log(val);
-                return val;
-            }
+            })
         }
     };
