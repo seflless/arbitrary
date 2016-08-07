@@ -99,7 +99,7 @@ npm publish
 #### Test
 The tests must be built before they can be run. So use either the build or watch approach below before running the tests.
 
-**All tests are run automatically on push via [travis-ci](https://travis-ci.org/francoislaberge/arbitrary)**
+All tests are run automatically on push via [our travis-ci integration](https://travis-ci.org/francoislaberge/arbitrary)
 
 ```
 npm run test
