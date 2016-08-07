@@ -68,3 +68,49 @@ console.log( generate.prev.number(0, 10000) );
 
 ## API Reference
 Coming soon. See examples above.
+
+
+## Contributing
+
+#### Setup
+```
+git clone git@github.com:francoislaberge/arbitrary.git
+cd arbitrary
+```
+
+#### Watching
+```
+npm run watch
+```
+
+#### Building
+```
+npm run build
+```
+
+#### Publishing to NPM
+Do the usual npm version bump then publish.
+```
+npm version <major|minor|patch>
+git push; git push --tags
+npm publish
+```
+
+#### Test
+The tests must be built before they can be run. So use either the build or watch approach below before running the tests. **All tests are run automatically on push via travis-ci**
+
+```
+npm run test
+```
+
+#### Watch Tests
+Automatically builds tests when any source code changes (test or regular).
+
+```
+npm run watch-test
+```
+
+#### Build Tests
+```
+npm run build-test
+```
