@@ -1,5 +1,5 @@
 # Overview
-<a href="https://api.travis-ci.org/francoislaberge/arbitrary"><img src="https://api.travis-ci.org/francoislaberge/arbitrary.svg" alt="Build Status"></a>
+<a href="https://travis-ci.org/francoislaberge/arbitrary"><img src="https://api.travis-ci.org/francoislaberge/arbitrary.svg" alt="Build Status"></a>
 
 Efficient Reversible Number Generator.
 
