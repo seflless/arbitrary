@@ -1,13 +1,22 @@
-import {lcg, lcgIndexed} from './lcg';
+import Generator from './Generator';
+
+//console.log('Generator');
+//console.log(Generator);
 
 const arbitrary = {
-  lcg,
-  lcgIndexed
+  Generator: Generator
 };
+//console.log('arbitrary');
+//console.log(arbitrary);
 
 export default arbitrary;
 
 // TODO: Look into what the right pattern is here
-if( module && module.exports ){
+if( typeof window !== 'undefined' ){
     window.arbitrary = arbitrary;
 }
+if( module && module.exports ){
+    module.exports = arbitrary;
+}
+//console.log('module.exports');
+//console.log(module.exports);

@@ -2,12 +2,17 @@
 [![Build Status](https://api.travis-ci.org/francoislaberge/arbitrary.svg)
 
 TODO
+  - Tests
+    - Run exhaustive tests? (Maybe separately from main tests)
   - First test that this approach works for all number ranges
   - Then strip down use of Long library code
   - Really document and get it understood (Defer, maybe it's time to move on)
   - Now start thinking about a good API design
   - I prefer the var generate = arbitrary.Generator() and arbitrary.float(min|min,max)
   - Can we make it both play well with immutable style APIs and the convenience of a self mutating one?
+  - Add an entry here (pointing to my implementation):
+    - https://stackoverflow.com/questions/2911432/reversible-pseudo-random-sequence-generator
+  - Consider making a generalized library for reversible applications (T-Functions (or is that just for bit oriented ones), T-Applications?)
 
 Generate random numbers.
 

@@ -2,3 +2,5 @@
 .o
 node_modules
 lib
+lib-tests
+npm-debug*

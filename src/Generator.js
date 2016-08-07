@@ -1,3 +1,105 @@
+/*
+ *
+ */
+
+const MAX_U32 = Math.pow(2,32);
+
+// See https://en.wikipedia.org/wiki/Linear_congruential_generator#Period_length
+// for why we picked these numbers. We copied the 'Numerical Recipes' numbers from here
+// https://en.wikipedia.org/wiki/Linear_congruential_generator#Parameters_in_common_use
+// Creates a period length of [0, 2^32 - 1 ]
+const c = 1013904223;
+const m = 4294967296; // = Math.pow(2,32);
+const a = 1664525;
+
+// This is the inverse of 'a' above for modolo multiplicative needed for calculating
+// the inverse of the standard linear congruent generator state update function.
+// For a good primer/starting point, see: http://stackoverflow.com/a/16630535.
+// The contribution of this library is making this approach work in Javascript
+// which has bit operators, multiplication, and modolo operation semantics
+// different than the 2s-complement integer math of languages like C/C++
+const aInverse = -18851643;
+
+export default class Generator {
+
+    // Creates a new Generator
+    // takes a seed or defaults to Math.random()
+    constructor(seed){
+        seed = seed || Math.floor( Math.random() * MAX_U32);
+        this.state = seed;
+    }
+
+    /**
+     * @returns A number between the [0, 1);
+     */
+    percent(){
+        return (this._state / MAX_U32);
+    }
+
+    /**
+     * @returns A number between the min/max;
+     */
+    number(min, max){
+        return (this._state / MAX_U32) * ( max - min ) + min;
+    }
+
+    /**
+     * @returns A u32 between the min/max;
+     */
+    /*u32(min, max){
+        if(arguments.length === 0){
+            return this._state;
+        }
+        // TODO: Put in constraints that guarantee if it's an integer,
+        // that min/max are integers, and that the result and min/max
+        // are in the allowed range of values for u32s
+        return Math.floor( this.number(min, max) );
+    }*/
+
+    /**
+     * Generate random bits. Up to 32, this is intended for 32 bit bit
+     * operation use cases
+     */
+    bits(bitCount){
+        if( bitCount <= 0 || bitCount > 32 ) {
+            throw new Error(`Generator.bits()'s bitCount parameter must be in the range [1 - 32]. Provided bitCount=${bitCount}`);
+        }
+        // Use the higher bits as the lower bits have a low period. I haven't looked into the exact
+        // math of why, but in my tests in masking off the lower bits and graphing them it tended
+        // to loop very quickly.
+        // TODO: Test the above concern and in general do some analysis of the quality of generated
+        // numbers using different places of the number.
+        return this._state >>> (32 - bitCount);
+    }
+
+    // Move the generators internal state
+    // forward one step
+    get next(){
+        this._state = lcg(this._state);
+        return this;
+    }
+
+    // Move the generators internal state
+    // forward one step
+    get prev(){
+        this._state = rlcg(this._state);
+        return this;
+    }
+
+    // Set the state of the generator. Must be a valid u32 integer
+    set state(state){
+        if( state < 0 || state >= MAX_U32 ) {
+            throw new Error(`Generator.state must be a number between 0 and (2^32 - 1). Provided state was ${state}.`)
+        }
+        this._state = state;
+    }
+
+    // Get the current internal state
+    get state(){
+        return this._state;
+    }
+}
+
 // Copyright 2009 The Closure Library Authors. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -796,73 +898,15 @@ Long.ValueCacheId_ = {
   TWO_PWR_24: 6
 };
 
-function xgcd(a,b)
- {
- if (b == 0)
-   {return [1, 0, a]}
- else
-   {
-    temp = xgcd(b, mod(a, b))
-    x = temp[0]
-    y = temp[1]
-    d = temp[2]
-    return [y, x-y*Math.floor(a/b), d]
-   }
- }
-
-var gcd = function(a, b) {
-    if ( ! b) {
-        return a;
-    }
-
-    return gcd(b, a % b);
-};
-
-switch(1){
-    case 0:
-        var c = 1;
-        var m = 9;
-        var a = 4;
-        var state = 0;
-
-        break;
-    case 1:
-        var c = 1013904223;
-        var m = 4294967296;
-        var a = 1664525;
-             //-18851643
-        var state = Math.floor( Math.random() * Math.pow(2,32) );
-
-        break;
-}
-console.log('------');
-console.log(state);
-
-var results = xgcd(a,m);
-console.log('------');
-console.log(results);
-console.log('------');
-
-var aInverse = results[0];
-
-function lcg() {
+function lcg(state) {
     state = (a * state + c) % m;
     return state;
 }
 
-//state = (a * prevState + c) % m;
-
-//state = (a * prevState + c) % m;
-
-// Mod that works correctly on negatives
-function mod(n, m) {
-        return ((n % m) + m) % m;
-}
-
-function rlcg(){
-    var result = Long.fromInt(-18851643)
+function rlcg(state){
+    var result = Long.fromInt(aInverse)
         .multiply(
-            Long.fromNumber(state-1013904223)
+            Long.fromNumber(state - 1013904223)
         );//
     var pow2to32 = new Long( 0, 1 );
 
@@ -876,41 +920,4 @@ function rlcg(){
     result = result.toNumber();
     state = result;
     return state;
-//console.log( ().toString() );
 }
-
-function sub(a, b, m) {
-    var r = a - b;
-    if( r < 0 ) {
-        // wrap around
-        return m + r;
-    } else {
-        return r;
-    }
-}
-
-for(var i = 0; i<8; i++){
-    console.log(lcg());
-}
-console.log('------');
-console.log(lcg());
-console.log('------');
-for(var i = 0; i<8; i++){
-    console.log(rlcg());
-}
-
-console.log('------');
-console.log('M');
-console.log(a);
-console.log('M (Inverse)');
-console.log(aInverse);
-//console.log(mod(-5,4))
-//console.log(-5%4)
-
-console.log('------');
-state = 2360113436;
-//      2360113440
-console.log(lcg());
-console.log('------');
-console.log(rlcg());
-console.log('------');
