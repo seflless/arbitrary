@@ -1,17 +1,15 @@
 {
   "name": "arbitrary",
-  "version": "0.0.6",
+  "version": "1.0.0",
   "description": "Efficient Reversible Number Generator",
   "main": "arbitrary.js",
   "scripts": {
     "clean": "rm -rf lib; mkdir lib",
     "build": "npm run clean && ./node_modules/.bin/browserify -t [ babelify ] src/index.js -o lib/index.js -p mapstraction --debug",
     "watch": "npm run clean && ./node_modules/.bin/watchify src/index.js -t [ babelify ] -o lib/index.js -p mapstraction --debug",
-
     "clean-test": "rm -rf lib-tests; mkdir lib-tests",
     "build-test": "npm run clean-test && ./node_modules/.bin/browserify -t [ babelify ] tests/index.js -o lib-tests/index.js -p mapstraction --debug",
     "watch-test": "npm run clean-test && ./node_modules/.bin/watchify tests/index.js -t [ babelify ] -o lib-tests/index.js -p mapstraction --debug",
-
     "test": "./node_modules/.bin/mocha lib-tests"
   },
   "repository": {
