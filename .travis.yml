@@ -2,5 +2,4 @@ language: node_js
 node_js:
   - "4.1"
 
-before_script: npm run build-tests
-script: npm run tests
+before_script: npm run build-test
