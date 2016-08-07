@@ -8,11 +8,11 @@
     "build": "npm run clean && ./node_modules/.bin/browserify -t [ babelify ] src/index.js -o lib/index.js -p mapstraction --debug",
     "watch": "npm run clean && ./node_modules/.bin/watchify src/index.js -t [ babelify ] -o lib/index.js -p mapstraction --debug",
 
-    "clean-tests": "rm -rf lib-tests; mkdir lib-tests",
-    "build-tests": "npm run clean-tests && ./node_modules/.bin/browserify -t [ babelify ] tests/index.js -o lib-tests/index.js -p mapstraction --debug",
-    "watch-tests": "npm run clean-tests && ./node_modules/.bin/watchify tests/index.js -t [ babelify ] -o lib-tests/index.js -p mapstraction --debug",
+    "clean-test": "rm -rf lib-tests; mkdir lib-tests",
+    "build-test": "npm run clean-test && ./node_modules/.bin/browserify -t [ babelify ] tests/index.js -o lib-tests/index.js -p mapstraction --debug",
+    "watch-test": "npm run clean-test && ./node_modules/.bin/watchify tests/index.js -t [ babelify ] -o lib-tests/index.js -p mapstraction --debug",
 
-    "tests": "./node_modules/.bin/mocha lib-tests"
+    "test": "./node_modules/.bin/mocha lib-tests"
   },
   "repository": {
     "type": "git",
