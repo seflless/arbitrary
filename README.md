@@ -1,5 +1,5 @@
 # Overview
-[![Build Status](https://api.travis-ci.org/francoislaberge/arbitrary.svg)
+[Build Status](https://api.travis-ci.org/francoislaberge/arbitrary.svg)
 Library for generating a stream of random numbers efficiently. Ideal for generative art/animation as well as game entity behavior.
   - Is deterministic (provided you supply a known seed)
   - Has a period length of 2 ^ 32
