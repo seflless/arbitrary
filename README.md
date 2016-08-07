@@ -2,11 +2,12 @@
 ![Build Status](https://api.travis-ci.org/francoislaberge/arbitrary.svg)
 
 Library for generating a stream of random numbers efficiently. Ideal for generative art/animation as well as game entity behavior.
-  - Is deterministic (provided you supply a known seed)
+  - Is deterministic (provide the same seed, and get the same stream of random values)
   - Has a period length of 2 ^ 32
   - Exhaustively covers each value of [0, 2 ^ 32)
+  - Internal state only takes up 32bits of space.
   - Is reversible (see `.next` and `.prev` in [Reversing](#reversing) section)
-  - Good test coverage
+  - Great test coverage (More to come)
 
 # Installation
 
