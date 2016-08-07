@@ -1,7 +1,7 @@
 {
   "name": "arbitrary",
   "version": "0.0.6",
-  "description": "Pseudo Random Number Generator",
+  "description": "Efficient Reversible Number Generator",
   "main": "arbitrary.js",
   "scripts": {
     "clean": "rm -rf lib; mkdir lib",
@@ -19,11 +19,14 @@
     "url": "git://github.com/francoislaberge/arbitrary.git"
   },
   "keywords": [
-    "random",
-    "generator",
-    "tinymt",
-    "mersenne",
-    "twister"
+    "lcg",
+    "rlcg",
+    "reversible",
+    "linear congruent generator",
+    "generative",
+    "deterministic",
+    "random number generator",
+    "rng"
   ],
   "author": "Francois Laberge <francoislaberge@gmail.com>",
   "bugs": {
