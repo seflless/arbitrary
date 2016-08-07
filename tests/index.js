@@ -102,7 +102,6 @@ function isInt(n){
     return Number(n) === n && n % 1 === 0;
 }
 
-
 /**
  * Generate a random sample of numbers from the provided function. The generator
  * function provided should be designed to be called repeatedly, generating a new
