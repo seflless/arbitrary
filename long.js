@@ -862,7 +862,7 @@ function mod(n, m) {
 function rlcg(){
     var result = Long.fromInt(-18851643)
         .multiply(
-            Long.fromInt(state).subtract(Long.fromInt(1013904223))
+            Long.fromNumber(state-1013904223)
         );//
     var pow2to32 = new Long( 0, 1 );
 

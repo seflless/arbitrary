@@ -1,6 +1,14 @@
 # Overview
 [![Build Status](https://api.travis-ci.org/francoislaberge/arbitrary.svg)
 
+TODO
+  - First test that this approach works for all number ranges
+  - Then strip down use of Long library code
+  - Really document and get it understood (Defer, maybe it's time to move on)
+  - Now start thinking about a good API design
+  - I prefer the var generate = arbitrary.Generator() and arbitrary.float(min|min,max)
+  - Can we make it both play well with immutable style APIs and the convenience of a self mutating one?
+
 Generate random numbers.
 
   - More leads
