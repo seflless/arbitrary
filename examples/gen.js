@@ -36,14 +36,14 @@ Generator.prototype = {
       this.mat2,
       this.tmat
     ];
-    
+
     var i;
     for(i = 1; i < MIN_LOOP; i++) {
       this.status[i & 3] ^= i + 1812433253
         * (this.status[(i - 1) & 3]
            ^ (this.status[(i - 1) & 3] >> 30));
       }
-    
+
     period_certification.apply(this);
 
     for(i = 0; i < PRE_LOOP; i++) {
@@ -58,7 +58,7 @@ Generator.prototype = {
     if(arguments.length === 0 ){
       min = 0.0;
       max = 1.0;
-    } 
+    }
     // If only one parameter is passed, it's treated as the max.
     // Range is [0.0, max]
     else if(arguments.length === 1 ){
@@ -70,7 +70,7 @@ Generator.prototype = {
       min = arguments[0];
       max = arguments[1];
     }
-    
+
     value = tinymt32_generate_float.apply(this);
     return value * (max-min) + min;
   },
@@ -81,12 +81,12 @@ Generator.prototype = {
     // If no min/max were provided range is [0.0, 1.0]
     if(arguments.length === 0 ){
       min = 0;
-      
+
       // Max defaults to 9007199254740992 if not provided
       // This number was based on this Stackoverflow answer:
       // http://stackoverflow.com/questions/307179/what-is-javascripts-highest-integer-value-that-a-number-can-go-to-without-losin#answer-11639621
       max = 1000000;
-    } 
+    }
     // If only one parameter is passed, it's treated as the max.
     // Range is [0.0, max]
     else if(arguments.length === 1 ){
@@ -98,19 +98,19 @@ Generator.prototype = {
       min = arguments[0];
       max = arguments[1];
     }
-    
+
     value = tinymt32_generate_float.apply(this);
     return Math.floor(value * (max-min) + min);
   },
 
   /*
-   * Note that for even rather small len(x), the total number of permutations of x is larger than the period of most random number generators; 
+   * Note that for even rather small len(x), the total number of permutations of x is larger than the period of most random number generators;
    * this implies that most permutations of a long sequence can never be generated.
    */
   shuffle: function(array){
     var output = array.slice(),
-        i, 
-        randomIndex, 
+        i,
+        randomIndex,
         swap;
 
     // Iterate through each element and swap it's location
@@ -224,11 +224,11 @@ function tinymt32_generate_float() {
 
 
 // Create a global generator that people can use by default.
-var arbitrary = new Generator();
+var gen = new Generator();
 
 // Make the Generator constructor available for those wanting
 // to manage their own instances.
-arbitrary.Generator = Generator;
+gen.Generator = Generator;
 
 /* --------------------------------
  * Support multiple module formats
@@ -236,17 +236,17 @@ arbitrary.Generator = Generator;
 
 // CommonJS module is defined
 if (typeof module !== 'undefined' && module && module.exports) {
-  module.exports = arbitrary;
+  module.exports = gen;
 }
-// Require.js 
+// Require.js
 else if (typeof define === 'function' && define.amd) {
   define(function (require, exports, module) {
-    return arbitrary;
+    return gen;
   });
 }
-// Good old regular 
+// Good old regular
 else if(typeof window !== 'undefined') {
-  window.arbitrary = arbitrary;
+  window.gen = gen;
 }
 // wat!?
 else {

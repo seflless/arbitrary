@@ -4,7 +4,15 @@
   "description": "Pseudo Random Number Generator",
   "main": "arbitrary.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha tests"
+    "clean": "rm -rf lib; mkdir lib",
+    "build": "npm run clean && ./node_modules/.bin/browserify -t [ babelify ] src/index.js -o lib/index.js -p mapstraction --debug",
+    "watch": "npm run clean && ./node_modules/.bin/watchify src/index.js -t [ babelify ] -o lib/index.js -p mapstraction --debug",
+
+    "clean-test": "rm -rf lib-tests; mkdir lib-tests",
+    "build-test": "npm run clean-test && ./node_modules/.bin/browserify -t [ babelify ] tests/index.js -o lib-tests/index.js -p mapstraction --debug",
+    "watch-test": "npm run clean-test && ./node_modules/.bin/watchify tests/index.js -t [ babelify ] -o lib-tests/index.js -p mapstraction --debug",
+
+    "test": "./node_modules/.bin/mocha lib-tests"
   },
   "repository": {
     "type": "git",
@@ -22,7 +30,13 @@
     "url": "https://github.com/francoislaberge/arbitrary/issues"
   },
   "homepage": "https://github.com/francoislaberge/arbitrary",
-  "dependencies": {
-    "mocha": "^2.3.4"
-  }
+  "devDependencies": {
+    "babel-preset-es2015": "^6.9.0",
+    "babelify": "^7.3.0",
+    "browserify": "^13.0.1",
+    "mapstraction": "^1.0.0",
+    "mocha": "^2.3.4",
+    "watchify": "^3.7.0"
+  },
+  "license": "MIT"
 }
