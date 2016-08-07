@@ -1,12 +1,14 @@
 # Overview
 ![Build Status](https://api.travis-ci.org/francoislaberge/arbitrary.svg)
 
-Library for generating a stream of random numbers efficiently. Ideal for generative art/animation as well as game entity behavior.
+Efficient Reversible Number Generator.
+
+Ideal for generative art/animation as well as game entity behavior.
   - Is deterministic (provide the same seed to get same stream of random values)
+  - Is reversible (see `.next` and `.prev` in [Reversing](#reversing) section)
+  - Internal state only takes up 32bits of space.
   - Has a period length of 2 ^ 32
   - Exhaustively covers each value of [0, 2 ^ 32)
-  - Internal state only takes up 32bits of space.
-  - Is reversible (see `.next` and `.prev` in [Reversing](#reversing) section)
   - Great test coverage (More to come)
 
 # Installation
