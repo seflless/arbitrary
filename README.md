@@ -3,7 +3,7 @@
 
 Efficient Reversible Number Generator.
 
-Ideal for generative art/animation as well as game entity behavior.
+Ideal for generative art, as well as games for varied entity behavior.
   - Is deterministic (provide the same seed to get same stream of random values)
   - Is reversible (see `.next` and `.prev` in [Reversing](#reversing) section)
   - Internal state only takes up 32bits of space.
