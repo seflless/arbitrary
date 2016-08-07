@@ -2,7 +2,7 @@
 ![Build Status](https://api.travis-ci.org/francoislaberge/arbitrary.svg)
 
 Library for generating a stream of random numbers efficiently. Ideal for generative art/animation as well as game entity behavior.
-  - Is deterministic (provide the same seed, and get the same stream of random values)
+  - Is deterministic (provide the same seed to get same stream of random values)
   - Has a period length of 2 ^ 32
   - Exhaustively covers each value of [0, 2 ^ 32)
   - Internal state only takes up 32bits of space.
