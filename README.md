@@ -5,7 +5,7 @@ Efficient Reversible Number Generator.
 
 Ideal for generative art, as well as games for varied entity behavior.
   - Is deterministic (provide the same seed to get same stream of random values)
-  - Is reversible (see `.next` and `.prev` in [Reversing](#reversing) section)
+  - Is reversible (see [next/prev](#reversing) section)
   - Internal state only takes up 32bits of space.
   - Has a period length of 2 ^ 32
   - Exhaustively covers each value of [0, 2 ^ 32)
