@@ -9,7 +9,7 @@ Ideal for generative art, as well as games for varied entity behavior.
   - Internal state only takes up 32bits
   - Has a period length of 2^32
   - Each value from [0, 2^32) is generated exactly once in the total period
-  - Has great test coverage 
+  - Has great test coverage
 
 # Installation
 
@@ -97,7 +97,9 @@ npm publish
 ```
 
 #### Test
-The tests must be built before they can be run. So use either the build or watch approach below before running the tests. **All tests are run automatically on push via travis-ci**
+The tests must be built before they can be run. So use either the build or watch approach below before running the tests.
+
+**All tests are run automatically on push via [travis-ci](https://travis-ci.org/francoislaberge/arbitrary)**
 
 ```
 npm run test
