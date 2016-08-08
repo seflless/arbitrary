@@ -4,6 +4,22 @@ These are my backed up notes as I tried out various random generators and read p
 TODO
   - Tests
     - Run exhaustive tests? (Maybe separately from main tests)
+    - Prelimary tests of calling generate.next 2^32 times took 70s, so it's entirely feasible
+      to do exhaustive tests of properties
+      - Note: To ensure every value was hit and only once: `new Array(Math.pow(2,32))` fails,
+        but using `new Array(Math.pow(2,32)/32)` and then using a u32 and bit checks should work
+  - Find a good two way 32 bit hash
+    - https://stackoverflow.com/questions/959916/way-to-encrypt-a-single-int
+      - ISAAC
+        - https://www.npmjs.com/package/isaac
+        - https://en.wikipedia.org/wiki/Cryptographically_secure_pseudorandom_number_generator
+    - Don't forget to make it invertible too for bonus points
+      - Allows going backwards from a hash to it's index
+  - Goal builds an entire game world that is purely reversible
+    - See if we can make card games reversible
+    - Card game strategies
+    - Character movement
+    - Everything! (Or maybe make single simple game test beds. Especially classics like boids, A*, etc)
   - First test that this approach works for all number ranges
   - Then strip down use of Long library code
   - Really document and get it understood (Defer, maybe it's time to move on)
@@ -13,6 +29,11 @@ TODO
   - Add an entry here (pointing to my implementation):
     - https://stackoverflow.com/questions/2911432/reversible-pseudo-random-sequence-generator
   - Consider making a generalized library for reversible applications (T-Functions (or is that just for bit oriented ones), T-Applications?)
+  - Do try out xorshift
+    - https://bitbucket.org/runevision/random-numbers-testing/src/16491c9dfa60417a5b25bd496e06a8f75b8f4f50/Assets/Implementations/RandomNumberGenerators/XorShift.cs?at=default&fileviewer=file-view-default
+    - Does it have [0, 2^32) range?
+    - Is it reversible in Javascript
+    - Is it more performant?
 
 Generate random numbers.
 
