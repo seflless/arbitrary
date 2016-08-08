@@ -1,7 +1,5 @@
 import Generator from './Generator';
 
-const arbitrary = {
+module.exports = {
     Generator: Generator
 };
-
-export default arbitrary;
