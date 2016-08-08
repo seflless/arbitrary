@@ -13,7 +13,9 @@ Ideal for generative art, as well as games for varied entity behavior.
 
 # Installation
 
-      npm install arbitrary
+```
+npm install arbitrary
+```
 
 # Usage
 
