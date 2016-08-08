@@ -3,7 +3,7 @@ import arbitrary from '../src/index';
 
 describe('arbitrary', function() {
     describe('should be commonjs compatible', function () {
-        const arbitraryRequired = require('../src/index');
+        const arbitraryRequired = require('../src/index').default;
         assert(arbitraryRequired === arbitrary, `ES6 module and commonjs module should have been equivalent. es6=${arbitrary}, commonjs=${arbitraryRequired}`);
     });
     describe('Generator', function () {
