@@ -1,14 +1,22 @@
+
+var container = document.getElementById('container');
 function h4(title) {
     var h = document.createElement('h4');
     h.innerHTML = title;
-    document.body.appendChild(h);
+    container.appendChild(h);
+    return h;
+}
+function h3(title) {
+    var h = document.createElement('h3');
+    h.innerHTML = title;
+    container.appendChild(h);
     return h;
 }
 
 function p(content) {
     var p = document.createElement('p');
     p.innerHTML = content;
-    document.body.appendChild(p);
+    container.appendChild(p);
     return p;
 }
 
@@ -16,13 +24,11 @@ function canvas(width, height) {
     var canvas = document.createElement('canvas');
     canvas.width = width;
     canvas.height = height;
-    document.body.appendChild(canvas);
+    container.appendChild(canvas);
     return canvas;
 }
 
-function generateStrip(title, generator, samples, range, pixelSize) {
-    h4(title);
-
+function generateStrip( generator, samples, range, pixelSize) {
     var cvs = canvas(range * pixelSize, samples * pixelSize);
 
     clear(cvs);
@@ -38,8 +44,7 @@ function generateStrip(title, generator, samples, range, pixelSize) {
     }
 }
 
-function generateLoop(title, generator, samples, range, pixelSize) {
-    h4(title);
+function generateLoop( generator, samples, range, pixelSize) {
 
     var vals = [];
     for( var y = 0; y < samples; y++ ) {
@@ -48,8 +53,7 @@ function generateLoop(title, generator, samples, range, pixelSize) {
     p(vals.join(','));
 }
 
-function generate1D(title, generator, samples, range, pixelSize) {
-    h4(title);
+function generate1D( generator, samples, range, pixelSize) {
 
     var cvs = canvas(samples * pixelSize, range * pixelSize);
 
@@ -63,9 +67,7 @@ function generate1D(title, generator, samples, range, pixelSize) {
     }
 }
 
-function generate2D(title, generator, samples, range, pixelSize) {
-    h4(title);
-
+function generate2D( generator, samples, range, pixelSize) {
     var cvs = canvas(range * pixelSize, range * pixelSize);
 
     clear(cvs);
@@ -77,9 +79,7 @@ function generate2D(title, generator, samples, range, pixelSize) {
     }
 }
 
-function randomWalk(title, generator, samples, range, pixelSize) {
-    h4(title);
-
+function randomWalk( generator, samples, range, pixelSize) {
     var cvs = canvas(range * pixelSize, range * pixelSize);
 
     clear(cvs);

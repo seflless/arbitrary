@@ -6,41 +6,15 @@ var algorithms = {
             });
         },
         techniques: {
-            /*'tinytmt': function(){
-                var val = gen.integer();
-                return val;
-            },*/
-            'arbitrary.lcg': arbitrary.lcg,
-            /*'arbitrary.lcgIndexed': (function(){
-                var index = 0;
+            'arbitrary.lcg': (function (){
+                var generate = new arbitrary.default.Generator();
                 return function(){
-                    index++;
-                    return arbitrary.lcgIndexed(index);
-                };
-            })(),*/
+                    var val = generate.next.integer();
+                    return val;
+                }
+            })(),
             'Math.random': function (){
                 return Math.floor( Math.random() * Math.pow(2,32) );
-            },
-            'lcg': (function (){
-                lcg.setSeed();
-                return function(){
-                    var val = Math.floor( lcg.rand() * Math.pow(2,32) );
-                    return val;
-                }
-            })(),
-            'invwk': (function (){
-                invwk.setSeed();
-                return function(){
-                    var val = Math.floor( invwk.rand() * Math.pow(2,32) );
-                    return val;
-                }
-            })(),
-            'mwc': (function (){
-                mwc.setSeed();
-                return function(){
-                    var val = Math.floor( mwc.rand() * Math.pow(2,32) );
-                    return val;
-                }
-            })
+            }
         }
     };

@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 var arbitrary = require('./lib/').default;
 console.log(arbitrary);
 
