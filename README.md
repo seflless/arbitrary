@@ -11,6 +11,10 @@ Ideal for generative art, as well as games for varied entity behavior.
   - Each value from [0, 2^32) is generated exactly once in the total period
   - Has great test coverage
 
+# Demos
+ - [Night Sky](http://francoislaberge.com/arbitrary/examples/sky.html)
+ - [Samples](http://francoislaberge.com/arbitrary/examples/tests.html)
+
 # Installation
 
 ```
