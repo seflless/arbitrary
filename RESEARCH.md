@@ -3,6 +3,10 @@ These are my backed up notes as I tried out various random generators and read p
 
 TODO
   - Tests
+    - Shouldn't we be dividing by (MAX_U32-1), so that we can actually hit 1.0?
+      - Need to think this out, want to make sure we are absolutely as close to
+        unbiased in a direction as possible in generators such as (inclusive of both min/max)
+        [-1,1]  that want values between 
     - Run exhaustive tests? (Maybe separately from main tests)
     - Prelimary tests of calling generate.next 2^32 times took 70s, so it's entirely feasible
       to do exhaustive tests of properties
