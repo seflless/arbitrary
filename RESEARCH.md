@@ -8,6 +8,7 @@ TODO
         unbiased in a direction as possible in generators such as (inclusive of both min/max)
         [-1,1]  that want values between
     - Run exhaustive tests? (Maybe separately from main tests)
+      - Run for both next/prev but also scramble/unscramble
     - Prelimary tests of calling generate.next 2^32 times took 70s, so it's entirely feasible
       to do exhaustive tests of properties
       - Note: To ensure every value was hit and only once: `new Array(Math.pow(2,32))` fails,
@@ -16,7 +17,10 @@ TODO
     - [Fisher-Yates Shuffle](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle)
       - As found in here Mike Bostock's [Visualizing Algorithms](https://bost.ocks.org/mike/algorithms/#sorting)
 
+
   - Find a good two way 32 bit hash
+    - [This conversation looks very promising, lots of leads](https://www.quora.com/How-do-you-symmetrically-encrypt-32-bit-auto-increment-IDs-to-avoid-using-64-bit-UUIDs-to-conceal-the-size-and-order-of-a-database-table)
+      - https://github.com/0x4139/node-skip32
     - https://stackoverflow.com/questions/959916/way-to-encrypt-a-single-int
       - ISAAC
         - https://www.npmjs.com/package/isaac
