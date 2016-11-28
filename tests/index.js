@@ -1,5 +1,6 @@
 import assert from 'assert';
 import arbitrary from '../src/index';
+const Skip32 = require('../src/Skip32PureJS').Skip32;
 
 describe('arbitrary', function() {
     describe('module', function() {
@@ -16,7 +17,7 @@ describe('arbitrary', function() {
             });
             it('should generate random seed if no seed was provided', function () {
 
-                // Generate 10 random
+                // Test 10 randomly initialized generators
                 // NOTE: It's technically possible but unlikely that a test run
                 // could have collisions. If this ends up being an issue, then we
                 // we could switch to calculating how many were different and consider
@@ -93,19 +94,59 @@ describe('arbitrary', function() {
                 }
             });
         });
-    });
-    /*describe('#float()', function () {
-        it('should return an float', function () {
-            assert(isFloat(arbitrary.float()), "wasn't a float");
+
+        describe('scramble() / descramble()', function () {
+            it('should be versible', function () {
+
+                // Test a bunch of sample numbers to see if they scramble and descramble correctly
+                const scramblingSamples = [
+                    // Low range numbers
+                    0, 1, 2, 4, 8, 16, 32, 64,
+                    // High range numbers
+                    Math.pow(2, 32) - 1,
+                    Math.pow(2, 32) - 1 - 2,
+                    Math.pow(2, 32) - 1 - 4,
+                    Math.pow(2, 32) - 1 - 8,
+                    Math.pow(2, 32) - 1 - 16,
+                    Math.pow(2, 32) - 1 - 32,
+                    Math.pow(2, 32) - 1 - 64,
+                    // Also some randomly generated numbers, using the following console statement:
+                    // for(let i = 0; i<10; i++){console.log( Math.floor( Math.random() * Math.pow(2, 32) ) ); }
+                    2599597252,
+                    4153347228,
+                    1043597882,
+                    1408751830,
+                    2053248205,
+                    2484325525,
+                    2803278095,
+                    1224986032,
+                    2895711202,
+                    3376187439
+                ];
+
+                scramblingSamples.forEach( (sample) => {
+                    const scrambled = arbitrary.scramble(sample);
+                    assert( isValidUnsigned32BitInteger(scrambled), `scramble(${sample}) wasn't a valid u32` );
+
+                    const unscrambled = arbitrary.descramble(scrambled);
+                    assert( unscrambled === sample, `unscramble(scramble(${sample})) should have been reversible`);
+                });
+            });
         });
-    });*/
+    });
 });
 
 /**
- * Check that a number is proper integer
+ * Check that a number is a valid unsigned 32 bit integer
  */
-function isInt(n){
-    return Number(n) === n && n % 1 === 0;
+function isValidUnsigned32BitInteger(n){
+        // Can it cast to a number
+    return Number(n) === n  &&
+        // Make sure it has no decimal places
+        n % 1 === 0 &&
+        // Make sure it's in the range [0, 2^32 - 1]
+        n >= 0 &&
+        n < Math.pow(2,32);
 }
 
 /**

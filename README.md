@@ -72,6 +72,28 @@ console.log( generate.prev.number(-10, 10) );
 console.log( generate.prev.number(0, 10000) );
 ```
 
+## Scramble / Descramble
+The scramble function is best used for turning sequences of ordered numbers like a series of increasing numbers
+and scrambling the bits to get a pseudo random number. It also reversible via `arbitrary.descramble()`.
+
+**Important**: Use Generator .next/.prev if
+you don't need this focus but just want a series of random numbers as this scramble/unscramble are computationally
+more expensive.
+
+```js
+import arbitrary from 'arbitrary';
+
+// Scramble the bits of an unsigned 32 bit integer
+const scrambled42 = arbitrary.scramble(42);
+    // Should print '1077848774'
+console.log(scrambled42);
+
+// Reverse the scrambling to get back the original number
+const unscrambled42 = arbitrary.descramble(scrambled42);
+    // Should print '42'
+console.log(unscrambled42)
+```
+
 ## API Reference
 Coming soon. See examples above.
 
