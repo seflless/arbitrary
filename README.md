@@ -73,8 +73,20 @@ console.log( generate.prev.number(0, 10000) );
 ```
 
 ## Scramble / Descramble
-The scramble function is best used for turning sequences of ordered numbers like a series of increasing numbers
-and scrambling the bits to get a pseudo random number. It also reversible via `arbitrary.descramble()`.
+The scramble function is best used for turning sequences of ordered numbers (Ex. an increasing counter)
+and scrambling the bits to get random number. It also reversible via `arbitrary.descramble()`.
+
+A few obvious utilizing scrambling:
+ 1. Jump back and forward in a stream of randomly generated numbers.
+   - To do this, keep an index into a sequence and scramble the index you want a random number. Just
+     jump or set the index to another point and scramble it again to recoup the random number generated
+     at that point in time.
+   - For comparison using `Generator .next/.prev` can be forwarded/reversed, but
+     it can only do so a single step at a time, making large jumps in a sequence
+     take proportionally more CPU per distance jumped.
+ 2. Use scramble to take a `Generate` state and jump to another point in the sequence it generates.
+   - This is useful for instance when creating generative art and wanting to fork a
+     new stream of random values. 
 
 **Important**: Use Generator .next/.prev if
 you don't need this focus but just want a series of random numbers as this scramble/unscramble are computationally
