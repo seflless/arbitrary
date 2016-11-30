@@ -16,7 +16,31 @@ TODO
   - Add shuffling at some point
     - [Fisher-Yates Shuffle](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle)
       - As found in here Mike Bostock's [Visualizing Algorithms](https://bost.ocks.org/mike/algorithms/#sorting)
+  - Cleanup API/module structure, support functional and OO styles
+    - Functional:
+    ```
+    import {seed, next, prev, scramble, unscramble, range, percent, float, bits, integer} from 'arbitrary';
+    let state = seed(state|undefined); // undefined is equivalent to 0. any non positive integer throws an exception
+    const bitMask = bits(state, bitCount)
+    // Roll the state forward one step before generating more values
+    state = next(state);
+    // Create a new stream of random numbers by deriving a new state from the existing one
+    const fork = scramble(state);
+    const anotherNumber = integer(forkedState, 0, 10);
+    ```
+    - OO:
+      ```
+      import {Generator} from 'arbitrary';
+      const generator = new Generator(state|undefined); // undefined is equivalent to 0. any non positive integer throws an exception
 
+      // Generate a number between 0 and bitCount^2 - 1 (Using current generator state, AND advancing the state);
+      generator.bits(bitCount);
+      // Step the generator forward one step
+      generator.next();
+      // Step the generator backwards one step
+      generator.next();
+      - generate
+      ```
 
   - Find a good two way 32 bit hash
     - [This conversation looks very promising, lots of leads](https://www.quora.com/How-do-you-symmetrically-encrypt-32-bit-auto-increment-IDs-to-avoid-using-64-bit-UUIDs-to-conceal-the-size-and-order-of-a-database-table)
