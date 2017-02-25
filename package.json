@@ -10,7 +10,8 @@
     "clean-test": "rm -rf lib-tests; mkdir lib-tests",
     "build-test": "npm run clean-test && ./node_modules/.bin/browserify -t [ babelify ] tests/index.js -o lib-tests/index.js -p mapstraction --debug",
     "watch-test": "npm run clean-test && ./node_modules/.bin/watchify tests/index.js -t [ babelify ] -o lib-tests/index.js -p mapstraction --debug",
-    "test": "./node_modules/.bin/mocha lib-tests"
+    "test": "./node_modules/.bin/mocha lib-tests",
+    "publish": "build && npm publish"
   },
   "repository": {
     "type": "git",

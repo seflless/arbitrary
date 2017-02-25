@@ -1,6 +1,5 @@
 import assert from 'assert';
 import arbitrary from '../src/index';
-const Skip32 = require('../src/Skip32PureJS').Skip32;
 
 describe('arbitrary', function() {
     describe('module', function() {
