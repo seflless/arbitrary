@@ -108,7 +108,7 @@ A few obvious utilizing scrambling:
      new stream of random values.
 
 **Important**: Use Generator .next/.prev if
-you don't need this focus but just want a series of random numbers as this scramble/unscramble are computationally
+you don't need this focus but just want a series of random numbers as `scramble`/`unscramble` are computationally
 more expensive.
 
 ```js
