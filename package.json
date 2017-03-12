@@ -11,7 +11,7 @@
     "build-test": "npm run clean-test && ./node_modules/.bin/browserify -t [ babelify ] tests/index.js -o lib-tests/index.js -p mapstraction --debug",
     "watch-test": "npm run clean-test && ./node_modules/.bin/watchify tests/index.js -t [ babelify ] -o lib-tests/index.js -p mapstraction --debug",
     "test": "./node_modules/.bin/mocha lib-tests",
-    "publish": "npm run build && npm publish"
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
