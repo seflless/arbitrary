@@ -1,6 +1,6 @@
 {
   "name": "arbitrary",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "description": "Efficient Reversible Number Generator",
   "main": "lib/index.js",
   "scripts": {
