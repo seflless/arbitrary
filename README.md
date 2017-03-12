@@ -3,6 +3,8 @@
 
 Efficient Reversible Number Generator.
 
+<img src="images/screenshot.png" width="100%"/>
+
 Ideal for generative art, as well as games for varied entity behavior.
   - Is deterministic (provide the same seed to get same stream of random values)
   - Is reversible (see [next/prev](#reversing) section)
@@ -86,7 +88,7 @@ A few obvious utilizing scrambling:
      take proportionally more CPU per distance jumped.
  2. Use scramble to take a `Generate` state and jump to another point in the sequence it generates.
    - This is useful for instance when creating generative art and wanting to fork a
-     new stream of random values. 
+     new stream of random values.
 
 **Important**: Use Generator .next/.prev if
 you don't need this focus but just want a series of random numbers as this scramble/unscramble are computationally
