@@ -3,7 +3,7 @@
 
 Efficient Reversible Number Generator.
 
-<img src="images/screenshot.png" width="100%"/>
+<img src="http://francoislaberge.com/arbitrary/images/screenshot.png" width="100%"/>
 
 Ideal for generative art, as well as games for varied entity behavior.
   - Is deterministic (provide the same seed to get same stream of random values)
