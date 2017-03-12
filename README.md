@@ -75,6 +75,20 @@ console.log( generate.prev.bits(1) );
 console.log( generate.prev.percent() );
 console.log( generate.prev.number(-10, 10) );
 console.log( generate.prev.number(0, 10000) );
+
+/**
+Output will be:
+
+    0.734807450324297
+    -3.3194907444994897
+    0.9332054262049496
+    1
+    3735025540
+    1
+    0.9332054262049496
+    -3.3194907444994897
+    0.734807450324297
+*/
 ```
 
 ## Scramble / Descramble
