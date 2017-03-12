@@ -18,7 +18,6 @@ Ideal for generative art, as well as games for varied entity behavior.
   - Has great test coverage
 
 # Demos
- - [Night Sky](http://francoislaberge.com/arbitrary/examples/sky.html)
  - [Samples](http://francoislaberge.com/arbitrary/examples/tests.html)
 
 # Installation
