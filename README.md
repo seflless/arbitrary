@@ -1,7 +1,7 @@
 # Overview
 <a href="https://travis-ci.org/francoislaberge/arbitrary"><img src="https://api.travis-ci.org/francoislaberge/arbitrary.svg" alt="Build Status"></a>
 
-Efficient Reversible Number Generator.
+A deterministic and reversible random number generator.
 
 <img src="http://francoislaberge.com/arbitrary/images/screenshot.png" width="100%"/>
 
