@@ -3,9 +3,13 @@
 
 A deterministic and reversible random number generator.
 
+Ideal for generative art, as well as games for varied entity behavior.
+
 <img src="http://francoislaberge.com/arbitrary/images/screenshot.png" width="100%"/>
 
-Ideal for generative art, as well as games for varied entity behavior.
+
+## Features
+
   - Is deterministic (provide the same seed to get same stream of random values)
   - Is reversible (see [next/prev](#reversing) section)
   - Internal state only takes up 32bits
