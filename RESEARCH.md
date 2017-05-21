@@ -101,6 +101,10 @@ Search for algorithms with some or all of the following properties:
   - maximum period length for state bit size (ie 32 bit state should generate 2^32 unique values before looping again)
   - lastly but less important: the usual ideal PRNG properties
 
+Good References
+ - http://www.pcg-random.org/
+ - V8 switched to new generator in 2015
+  - https://v8project.blogspot.com/2015/12/theres-mathrandom-and-then-theres.html
 
 TODO:
   - Explain each algorithm, cleanly and visually
