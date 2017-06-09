@@ -51,6 +51,8 @@ TODO
         - https://en.wikipedia.org/wiki/Cryptographically_secure_pseudorandom_number_generator
     - Don't forget to make it invertible too for bonus points
       - Allows going backwards from a hash to it's index
+  - Neat Hash algorithms
+    - https://www.npmjs.com/package/tifuhash
   - Goal builds an entire game world that is purely reversible
     - See if we can make card games reversible
     - Card game strategies
