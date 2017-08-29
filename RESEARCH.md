@@ -42,6 +42,8 @@ TODO
       - generate
       ```
 
+  - Random filling of 2d array (good for old school cross fade, but also for ray tracing?)
+   - http://fabiensanglard.net/fizzlefade/index.php
   - Find a good two way 32 bit hash
     - [This conversation looks very promising, lots of leads](https://www.quora.com/How-do-you-symmetrically-encrypt-32-bit-auto-increment-IDs-to-avoid-using-64-bit-UUIDs-to-conceal-the-size-and-order-of-a-database-table)
       - https://github.com/0x4139/node-skip32
