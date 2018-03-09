@@ -42,8 +42,8 @@ export default class Generator {
      * @returns A number between the min/max;
      */
     number(min, max) {
-        min = arguments.length > 1 ? min: 0;
-        max = arguments.length > 2 ? max: 1.0;
+        min = arguments.length >= 1 ? min: 0;
+        max = arguments.length >= 2 ? max: 1.0;
         return (this._state / MAX_U32) * (max - min) + min;
     }
 
