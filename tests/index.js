@@ -31,6 +31,15 @@ describe('arbitrary', function() {
             });
         });
 
+        describe('number()', function () {
+            it('should generate values in the range [10, 20)', function () {
+                let generate = new arbitrary.Generator();
+                checkGeneratedRange( () => {
+                    return generate.next.number(10, 20);
+                }, 10.0, 20.0);
+            });
+        });
+
         describe('percent()', function () {
             it('should generate values in the range [0, 1)', function () {
                 let generate = new arbitrary.Generator();
