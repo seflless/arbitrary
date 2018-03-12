@@ -73,8 +73,17 @@ var Generator = function () {
     }, {
         key: 'number',
         value: function number(min, max) {
-            min = arguments.length > 1 ? min : 0;
-            max = arguments.length > 2 ? max : 1.0;
+            if (arguments.length === 0) {
+                min = 0.0;
+                max = 1.0;
+            } else if (arguments.length === 1) {
+                min = 0.0;
+                max = min;
+            } else if (arguments.length === 2) {
+                // Do nothing, min and max are set
+            } else {
+                throw new Error("Generator.number() only takes up to 2 parameters");
+            }
             return this._state / _MaxU2.default * (max - min) + min;
         }
 
@@ -93,8 +102,18 @@ var Generator = function () {
     }, {
         key: 'integer',
         value: function integer(min, max) {
-            min = arguments.length >= 1 ? min : 0;
-            max = arguments.length >= 2 ? max : _MaxU2.default;
+            if (arguments.length === 0) {
+                min = 0;
+                max = _MaxU2.default;
+            } else if (arguments.length === 1) {
+                min = 0;
+                max = min;
+            } else if (arguments.length === 2) {
+                // Do nothing, min and max are set
+            } else {
+                throw new Error("Generator.integer() only takes up to 2 parameters");
+            }
+
             return Math.floor(this._state / _MaxU2.default * (max - min) + min);
         }
 
