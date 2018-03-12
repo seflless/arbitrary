@@ -83,7 +83,7 @@ export default class Generator {
         } else if( arguments.length === 2 ) {
             // Do nothing, min and max are set
         } else {
-            throw new Error("Generator.number() only takes up to 2 parameters");
+            throw new Error("Generator.integer() only takes up to 2 parameters");
         }
 
         return Math.floor( (this._state / MAX_U32) * (max - min) + min );

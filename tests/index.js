@@ -30,7 +30,47 @@ describe('arbitrary', function() {
                 }
             });
         });
+        
         describe('number()', function () {
+            it('0 args, should generate values in the range [0.0, 1.0]', function () {
+                let generate = new arbitrary.Generator();
+                checkGeneratedRange( () => {
+                    return generate.number()
+                }, 0, 1.0);
+            });
+
+            const maxOnly = 234245234.0;
+            it('1 arg, should generate values in the range [0.0, max]', function () {
+                let generate = new arbitrary.Generator();
+                checkGeneratedRange( () => {
+                    return generate.integer(maxOnly);
+                }, 0.0, maxOnly);
+            });
+
+            const min = -1234123423.0;
+            const maxAlso = 837281.0;
+            it('2 args, should generate values in the range [min, max]', function () {
+                let generate = new arbitrary.Generator();
+                checkGeneratedRange( () => {
+                    return generate.integer(min, maxAlso);
+                }, min, maxAlso);
+            });
+
+            it('Greater than 2 args, should throw an exception', function () {
+                let generate = new arbitrary.Generator();
+
+                try {
+                    generate.number( 1.0, 2.0, 3.0 );
+                    throw new Error("Shouldn't have reached here");
+                } catch( err ) {
+                    if( err.message !== "Generator.number() only takes up to 2 parameters" ) {
+                        throw new Error("Generator.number() should have thrown an exception");
+                    }
+                }
+            });
+        });
+
+        describe('integer()', function () {
             it('0 args, should generate values in the range [0, Math.pow(2, 32)]', function () {
                 let generate = new arbitrary.Generator();
                 checkGeneratedRange( () => {
@@ -43,7 +83,7 @@ describe('arbitrary', function() {
                 let generate = new arbitrary.Generator();
                 checkGeneratedRange( () => {
                     return generate.integer(maxOnly);
-                }, 0.0, maxOnly);
+                }, 0, maxOnly);
             });
 
             const min = -1234123423;
@@ -53,6 +93,19 @@ describe('arbitrary', function() {
                 checkGeneratedRange( () => {
                     return generate.integer(min, maxAlso);
                 }, min, maxAlso);
+            });
+
+            it('Greater than 2 args, should throw an exception', function () {
+                let generate = new arbitrary.Generator();
+
+                try {
+                    generate.integer( 1, 2, 3 );
+                    throw new Error("Shouldn't have reached here");
+                } catch( err ) {
+                    if( err.message !== "Generator.integer() only takes up to 2 parameters" ) {
+                        throw new Error("Generator.integer() should have thrown an exception");
+                    }
+                }
             });
         });
 
