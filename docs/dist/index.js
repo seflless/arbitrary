@@ -1,4 +1,4 @@
-(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.arbitrary = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.arbitrary = f()}})(function(){var define,module,exports;return (function(){function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s}return e})()({1:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -13,11 +13,13 @@ var _Long = require('./Long');
 
 var _Long2 = _interopRequireDefault(_Long);
 
+var _MaxU = require('./MaxU32');
+
+var _MaxU2 = _interopRequireDefault(_MaxU);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var MAX_U32 = Math.pow(2, 32);
 
 // See https://en.wikipedia.org/wiki/Linear_congruential_generator#Period_length
 // for why we picked these numbers. We copied the 'Numerical Recipes' numbers from here
@@ -42,7 +44,7 @@ var Generator = function () {
     function Generator(seed) {
         _classCallCheck(this, Generator);
 
-        seed = seed || Math.floor(Math.random() * MAX_U32);
+        seed = seed || Math.floor(Math.random() * _MaxU2.default);
         this.state = seed;
     }
 
@@ -54,11 +56,18 @@ var Generator = function () {
     _createClass(Generator, [{
         key: 'percent',
         value: function percent() {
-            return this._state / MAX_U32;
+            return this._state / _MaxU2.default;
         }
 
         /**
-         * @returns A number between the min/max;
+         * @min (optional) Lowest value 
+         * @max (optional) Highest value
+         * @returns A float between the min/max
+         * 
+         * Note: 
+         *  - If 0 args are passed, range is [0.0, 1.0]
+         *  - If 1 arg is passed, range is [0.0, max]
+         *  - If 2 args are passed, range is [min, max]
          */
 
     }, {
@@ -66,19 +75,27 @@ var Generator = function () {
         value: function number(min, max) {
             min = arguments.length > 1 ? min : 0;
             max = arguments.length > 2 ? max : 1.0;
-            return this._state / MAX_U32 * (max - min) + min;
+            return this._state / _MaxU2.default * (max - min) + min;
         }
 
         /**
-         * @returns A number between the min/max;
+         * /**
+         * @min (optional) Lowest value 
+         * @max (optional) Highest value
+         * @returns An integer between the min/max
+         * 
+         * Note: 
+         *  - If 0 args are passed, range is [0, Math.pow(2, 32)]
+         *  - If 1 arg is passed, range is [0, max]
+         *  - If 2 args are passed, range is [min, max]
          */
 
     }, {
         key: 'integer',
         value: function integer(min, max) {
             min = arguments.length >= 1 ? min : 0;
-            max = arguments.length >= 2 ? max : MAX_U32;
-            return Math.floor(this._state / MAX_U32 * (max - min) + min);
+            max = arguments.length >= 2 ? max : _MaxU2.default;
+            return Math.floor(this._state / _MaxU2.default * (max - min) + min);
         }
 
         /**
@@ -138,7 +155,7 @@ var Generator = function () {
     }, {
         key: 'state',
         set: function set(state) {
-            if (state < 0 || state >= MAX_U32) {
+            if (state < 0 || state >= _MaxU2.default) {
                 throw new Error('Generator.state must be a number between 0 and (2^32 - 1). Provided state was ' + state + '.');
             }
             this._state = state;
@@ -178,7 +195,7 @@ function rlcg(state) {
     return state;
 }
 
-},{"./Long":2}],2:[function(require,module,exports){
+},{"./Long":2,"./MaxU32":3}],2:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -930,6 +947,16 @@ exports.default = Long;
 },{}],3:[function(require,module,exports){
 "use strict";
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var MAX_U32 = Math.pow(2, 32);
+
+exports.default = MAX_U32;
+
+},{}],4:[function(require,module,exports){
+"use strict";
+
 /*
    **Francois**:
    Based on an implementation that's based on further implementations, most significant
@@ -1001,7 +1028,7 @@ Skip32.prototype.decrypt = function (n) {
 
 module.exports.Skip32 = Skip32;
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1014,9 +1041,14 @@ var _Generator2 = _interopRequireDefault(_Generator);
 
 var _scrambler = require('./scrambler');
 
+var _MaxU = require('./MaxU32');
+
+var _MaxU2 = _interopRequireDefault(_MaxU);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var arbitrary = {
+    MAX_U32: _MaxU2.default,
     Generator: _Generator2.default,
     scramble: _scrambler.scramble,
     descramble: _scrambler.descramble
@@ -1024,7 +1056,7 @@ var arbitrary = {
 
 exports.default = arbitrary;
 
-},{"./Generator":1,"./scrambler":5}],5:[function(require,module,exports){
+},{"./Generator":1,"./MaxU32":3,"./scrambler":6}],6:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1057,6 +1089,7 @@ function descramble(scrambledNumber) {
   return cypher.decrypt(scrambledNumber);
 }
 
-},{"./Skip32PureJS":3}]},{},[4])(4)
+},{"./Skip32PureJS":4}]},{},[5])(5)
 });
+
 //# sourceMappingURL=index.js.map

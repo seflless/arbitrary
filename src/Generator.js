@@ -3,8 +3,7 @@
  */
 
 import Long from './Long';
-
-const MAX_U32 = Math.pow(2, 32);
+import MAX_U32 from './MaxU32';
 
 // See https://en.wikipedia.org/wiki/Linear_congruential_generator#Period_length
 // for why we picked these numbers. We copied the 'Numerical Recipes' numbers from here
@@ -39,20 +38,54 @@ export default class Generator {
     }
 
     /**
-     * @returns A number between the min/max;
+     * @min (optional) Lowest value 
+     * @max (optional) Highest value
+     * @returns A float between the min/max
+     * 
+     * Note: 
+     *  - If 0 args are passed, range is [0.0, 1.0]
+     *  - If 1 arg is passed, range is [0.0, max]
+     *  - If 2 args are passed, range is [min, max]
      */
     number(min, max) {
-        min = arguments.length > 1 ? min: 0;
-        max = arguments.length > 2 ? max: 1.0;
+        if( arguments.length === 0 ) {
+            min = 0.0;
+            max = 1.0;
+        } else if( arguments.length === 1 ) { 
+            min = 0.0;
+            max = min;
+        } else if( arguments.length === 2 ) {
+            // Do nothing, min and max are set
+        } else {
+            throw new Error("Generator.number() only takes up to 2 parameters");
+        }
         return (this._state / MAX_U32) * (max - min) + min;
     }
 
     /**
-     * @returns A number between the min/max;
+     * /**
+     * @min (optional) Lowest value 
+     * @max (optional) Highest value
+     * @returns An integer between the min/max
+     * 
+     * Note: 
+     *  - If 0 args are passed, range is [0, Math.pow(2, 32)]
+     *  - If 1 arg is passed, range is [0, max]
+     *  - If 2 args are passed, range is [min, max]
      */
     integer(min, max) {
-        min = arguments.length >= 1 ? min: 0;
-        max = arguments.length >= 2 ? max: MAX_U32;
+        if( arguments.length === 0 ) {
+            min = 0;
+            max = MAX_U32;
+        } else if( arguments.length === 1 ) { 
+            min = 0;
+            max = min;
+        } else if( arguments.length === 2 ) {
+            // Do nothing, min and max are set
+        } else {
+            throw new Error("Generator.number() only takes up to 2 parameters");
+        }
+
         return Math.floor( (this._state / MAX_U32) * (max - min) + min );
     }
 

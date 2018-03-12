@@ -30,15 +30,42 @@ describe('arbitrary', function() {
                 }
             });
         });
+        describe('number()', function () {
+            it('0 args, should generate values in the range [0, Math.pow(2, 32)]', function () {
+                let generate = new arbitrary.Generator();
+                checkGeneratedRange( () => {
+                    return generate.number()
+                }, 0, arbitrary.MAX_U32);
+            });
+
+            const maxOnly = 234245234;
+            it('1 arg, should generate values in the range [0, max]', function () {
+                let generate = new arbitrary.Generator();
+                checkGeneratedRange( () => {
+                    return generate.integer(maxOnly);
+                }, 0.0, maxOnly);
+            });
+
+            const min = -1234123423;
+            const maxAlso = 837281;
+            it('2 args, should generate values in the range [min, max]', function () {
+                let generate = new arbitrary.Generator();
+                checkGeneratedRange( () => {
+                    return generate.integer(min, maxAlso);
+                }, min, maxAlso);
+            });
+        });
 
         describe('percent()', function () {
-            it('should generate values in the range [0, 1)', function () {
+            it('should generate values in the range [0.0, 1.0)', function () {
                 let generate = new arbitrary.Generator();
                 checkGeneratedRange( () => {
                     return generate.next.percent();
                 }, 0.0, 1.0);
             });
         });
+
+        
 
         describe('bits()', function () {
             it('should generate values in correct range regardless of bitCount', function () {
