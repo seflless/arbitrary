@@ -2,6 +2,7 @@
 These are my backed up notes as I tried out various random generators and read prio art.
 
 TODO
+  - Try out [the suggested algorithm](https://gist.github.com/schas002/757c0b948b469cd591c24f27eb16edf0#gistcomment-2905144) that supports random access random number generation that isn't expensive.
   - Tests
     - Shouldn't we be dividing by (MAX_U32-1), so that we can actually hit 1.0?
       - Need to think this out, want to make sure we are absolutely as close to
