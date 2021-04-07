@@ -5,7 +5,7 @@ A deterministic and reversible random number generator.
 
 Ideal for generative art, as well as games for varied entity behavior.
 
-<img src="http://francoislaberge.com/arbitrary/images/screenshot.png" width="100%"/>
+<img src="http://seflless.github.io/arbitrary/images/screenshot.png" width="100%"/>
 
 
 ## Features
