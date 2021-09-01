@@ -9,7 +9,7 @@ Irregardless, it's still useful for generative art and random behavior in games.
 
 See Demos:
  - [Bidirectional Determinism (Random Walk)](https://seflless.github.io/arbitrary/examples/bidirectional-determinism.html)
- - [Tests]](https://seflless.github.io/arbitrary/examples/tests.html)
+ - [Tests](https://seflless.github.io/arbitrary/examples/tests.html)
 
 ## Features
 
