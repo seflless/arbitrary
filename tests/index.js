@@ -134,7 +134,7 @@ describe('arbitrary', function() {
         });
 
         describe('next() / prev()', function () {
-            it('should be inverses of each other', function () {
+            it('next/prev should be inverses of each other', function () {
                 // Note: We use a random seeded generator to have tests
                 // act as an effective fuzzer by running a different seed each run
                 let generate = new arbitrary.Generator();
@@ -151,6 +151,27 @@ describe('arbitrary', function() {
                     generate.prev;
                     assert( samples[ (sampleCount - 1) - i] === generate.state,
                         `Reversed state didn't match sample. sample[${sampleCount - i}]=${samples[ (sampleCount - 1) - i]}, reversed state=${generate.state}. All samples:\n${samples}` );
+                }
+            });
+
+            it('.integer should work in both direction', function () {
+                // Note: We use a random seeded generator to have tests
+                // act as an effective fuzzer by running a different seed each run
+                let generate = new arbitrary.Generator();
+
+                const sampleCount = 100;
+                let samples = [];
+
+                for( let i = 0; i < sampleCount; i++ ) {
+                    generate.next;
+                    samples.push( generate.integer(-1,1) );
+                }
+
+                for( let i = 1; i < sampleCount; i++ ) {
+                    generate.prev;
+                    const int = generate.integer(-1,1);
+                    assert( samples[ (sampleCount - 1) - i] === int,
+                        `Reversed state didn't match sample. sample[${sampleCount - i}]=${samples[ (sampleCount - 1) - i]}, reversed integer=${int}. All samples:\n${samples}` );
                 }
             });
 
@@ -175,7 +196,7 @@ describe('arbitrary', function() {
         });
 
         describe('scramble() / descramble()', function () {
-            it('should be versible', function () {
+            it('should be reversible', function () {
 
                 // Test a bunch of sample numbers to see if they scramble and descramble correctly
                 const scramblingSamples = [

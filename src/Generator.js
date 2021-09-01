@@ -85,8 +85,7 @@ export default class Generator {
         } else {
             throw new Error("Generator.integer() only takes up to 2 parameters");
         }
-
-        return Math.floor( (this._state / MAX_U32) * (max - min) + min );
+        return Math.round( (this._state / MAX_U32) * (max - min)) + min;
     }
 
     /**

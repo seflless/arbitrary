@@ -113,8 +113,7 @@ var Generator = function () {
             } else {
                 throw new Error("Generator.integer() only takes up to 2 parameters");
             }
-
-            return Math.floor(this._state / _MaxU2.default * (max - min) + min);
+            return Math.round(this._state / _MaxU2.default * (max - min)) + min;
         }
 
         /**

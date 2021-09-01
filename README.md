@@ -7,7 +7,9 @@ I started this project to explore simulations that can be run forwards and backw
 
 Irregardless, it's still useful for generative art and random behavior in games.
 
-[See Demos](https://seflless.github.io/arbitrary/examples/tests.html)
+See Demos:
+ - [Bidirectional Determinism (Random Walk)](https://seflless.github.io/arbitrary/examples/bidirectional-determinism.html)
+ - [Tests]](https://seflless.github.io/arbitrary/examples/tests.html)
 
 ## Features
 
