@@ -7,9 +7,31 @@
             margin: 0px;
             background-color: black;
         }
+        #container{
+            position: absolute;
+            width: 100%;
+            display: flexbox;
+            justify-content: center;
+        }
+        #instructions{
+            text-align: center;
+            margin: 0px auto;
+        }
+        h1{
+            color:#8f8f8f;
+        }
+        h2{
+            color:white;
+        }
     </style>
 </head>
 <body>
+    <div id="container">div>
+        <div id="instructions">
+            <h1 id="direction">Rules Are Running Forward</h1>
+            <h2>Press To Toggle</h2>
+        </div>
+    </div>
     <canvas id="canvas"></canvas>
 
     <script src="../dist/index.js" type="text/javascript"></script>
@@ -51,18 +73,20 @@
             ctx.lineTo(xEnd,yEnd);
             ctx.stroke();
         }
-
-        window.toggle = ()=>{
+        const direction = document.getElementById('direction');
+        function toggle(){
             steppingForward = !steppingForward;
             if(steppingForward===false){
+                direction.innerHTML = "Rules Are Running Backwards";
                 generate.next;
             } else {
+                direction.innerHTML = "Rules Are Running Forward";
                 generate.prev;
             }
         }
 
         window.generate = generate;
-        const stepSize = 20;
+        const stepSize = 40;
         function loop(){
             prevX = x;
             prevY = y;
@@ -93,6 +117,8 @@
             cvs.height = window.innerHeight;
             draw();
         });
+
+        document.addEventListener('pointerdown', toggle)
     </script>
 </body>
 </html>
