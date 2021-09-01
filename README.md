@@ -1,12 +1,9 @@
 # Overview
 <a href="https://travis-ci.org/francoislaberge/arbitrary"><img src="https://api.travis-ci.org/francoislaberge/arbitrary.svg" alt="Build Status"></a>
 
-A deterministic and reversible random number generator.
+A deterministic and reversible random number generator. Ideal for generative art, as well as games for varied entity behavior.
 
-Ideal for generative art, as well as games for varied entity behavior.
-
-<img src="http://seflless.github.io/arbitrary/images/screenshot.png" width="100%"/>
-
+[See Demos](https://seflless.github.io/arbitrary/examples/tests.html)
 
 ## Features
 
@@ -17,8 +14,11 @@ Ideal for generative art, as well as games for varied entity behavior.
   - Each value from [0, 2^32) is generated exactly once in the total period
   - Has great test coverage
 
-# Demos
- - [Samples](http://francoislaberge.com/arbitrary/examples/tests.html)
+## Screenshots
+<img src="http://seflless.github.io/arbitrary/images/screenshot.png" width="100%"/>
+
+
+
 
 # Installation
 
