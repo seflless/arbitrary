@@ -1,9 +1,11 @@
 # Overview
 <a href="https://travis-ci.org/francoislaberge/arbitrary"><img src="https://api.travis-ci.org/francoislaberge/arbitrary.svg" alt="Build Status"></a>
 
-A deterministic and reversible random number generator. 
+A forward and backwards deterministic random number generator. 
 
-I started this project to explore simulations that can be run forwards and backwards, but I never ended up building anything sophisticated. Irregardless, it's still useful for generative art and random behavior in games.
+I started this project to explore simulations that can be run forwards and backwards, but I never ended up building anything sophisticated. 
+
+Irregardless, it's still useful for generative art and random behavior in games.
 
 [See Demos](https://seflless.github.io/arbitrary/examples/tests.html)
 
