@@ -167,8 +167,5 @@ function rlcg(state: number) {
   } else {
     result = result.modulo(pow2to32);
   }
-
-  result = result.toNumber();
-  state = result;
-  return state;
+  return result.toNumber();
 }
