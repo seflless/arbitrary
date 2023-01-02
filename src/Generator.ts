@@ -26,7 +26,7 @@ export default class Generator {
 
   // Creates a new Generator
   // takes a seed or defaults to Math.random()
-  constructor(seed: number) {
+  constructor(seed?: number) {
     seed = seed || Math.floor(Math.random() * MAX_U32);
     this.#state = seed;
   }
@@ -48,19 +48,16 @@ export default class Generator {
    *  - If 1 arg is passed, range is [0.0, max]
    *  - If 2 args are passed, range is [min, max]
    */
-  number(min: number, max: number) {
-    if (arguments.length === 0) {
+
+  number(min?: number, max?: number): number {
+    if (min === undefined && max === undefined) {
       min = 0.0;
       max = 1.0;
-    } else if (arguments.length === 1) {
+    } else if (max === undefined) {
       min = 0.0;
       max = min;
-    } else if (arguments.length === 2) {
-      // Do nothing, min and max are set
-    } else {
-      throw new Error("Generator.number() only takes up to 2 parameters");
     }
-    return (this.#state / MAX_U32) * (max - min) + min;
+    return (this.#state / MAX_U32) * (max - (min as number)) + (min as number);
   }
 
   /**
