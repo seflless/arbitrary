@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Arbitrary Moonlit Sky</title>
+    <style>
+        body{
+            margin: 0px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+
+    <script src="../dist/index.js" type="text/javascript"></script>
+    <script>
+        var cvs = document.getElementById('canvas');
+        var ctx = cvs.getContext('2d');
+        var generate = new arbitrary.default.Generator();
+
+        function draw(){
+            cvs.width = window.innerWidth;
+            cvs.height = window.innerHeight;
+
+            ctx.fillStyle = 'black';
+            ctx.fillRect(0, 0, cvs.width, cvs.height);
+
+            var starCount = 1000;
+            var i;
+            for(i = 0; i<starCount; i++){
+                drawCircle(
+                    generate.next.integer(cvs.width),
+                    generate.next.integer(cvs.height),
+                    generate.next.number(1,2),
+                    'white'
+                );
+            }
+
+            // Draw the earth
+            drawCircle(cvs.width/2, cvs.height+700, 800, '#0020C2');
+
+            // Draw the moon
+            drawCircle(
+                generate.next.integer(60, cvs.width-60),
+                generate.next.integer(60, cvs.height/3),
+                generate.next.integer(20, 35),
+                'white'
+            );
+        }
+
+        function drawCircle(centerX, centerY, radius, color) {
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+            ctx.fillStyle = color;
+            ctx.fill();
+        }
+
+        draw();
+        window.addEventListener('resize', function(){
+            draw();
+        });
+    </script>
+</body>
+</html>

@@ -7,8 +7,8 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, "src/index.ts"),
-      name: "simple-starter",
-      fileName: "simple-starter",
+      name: "arbitrary",
+      fileName: "arbitrary",
     },
   },
   plugins: [dts()],

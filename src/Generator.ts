@@ -106,7 +106,7 @@ export default class Generator {
    * Generate random bits. Up to 32, this is intended for 32 bit bit
    * operation use cases
    */
-  bits(bitCount) {
+  bits(bitCount: number) {
     if (bitCount <= 0 || bitCount > 32) {
       throw new Error(
         `Generator.bits()'s bitCount parameter must be in the range [1 - 32]. Provided bitCount=${bitCount}`
@@ -135,7 +135,7 @@ export default class Generator {
   }
 
   // Set the state of the generator. Must be a valid u32 integer
-  set state(state) {
+  set state(state: number) {
     if (state < 0 || state >= MAX_U32) {
       throw new Error(
         `Generator.state must be a number between 0 and (2^32 - 1). Provided state was ${state}.`
@@ -150,12 +150,12 @@ export default class Generator {
   }
 }
 
-function lcg(state) {
+function lcg(state: number) {
   state = (a * state + c) % m;
   return state;
 }
 
-function rlcg(state) {
+function rlcg(state: number) {
   var result = Long.fromInt(aInverse).multiply(
     Long.fromNumber(state - 1013904223)
   ); //

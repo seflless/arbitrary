@@ -1,16 +1,16 @@
 {
-  "name": "simple-starter",
-  "version": "0.0.1",
-  "description": "This is a starter project for publishing a simple Typescript module",
+  "name": "arbitrary",
+  "version": "1.4.10",
+  "description": "Random generators for generative art",
   "author": "Francois Laberge",
   "license": "MIT",
-  "homepage": "https://github.com/seflless/simple-starter",
+  "homepage": "https://github.com/seflless/arbitrary",
   "repository": {
     "type": "git",
-    "url": "https://github.com/seflless/simple-starter.git"
+    "url": "https://github.com/seflless/arbitrary.git"
   },
   "bugs": {
-    "url": "https://github.com/seflless/simple-starter/issues"
+    "url": "https://github.com/seflless/arbitrary/issues"
   },
   "keywords": [
     "publishing",
@@ -19,13 +19,13 @@
     "package"
   ],
   "type": "module",
-  "main": "./dist/simple-starter.umd.cjs",
-  "module": "./dist/simple-starter.js",
+  "main": "./dist/arbitrary.umd.cjs",
+  "module": "./dist/arbitrary.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/simple-starter.js",
-      "require": "./dist/simple-starter.umd.cjs"
+      "import": "./dist/arbitrary.js",
+      "require": "./dist/arbitrary.umd.cjs"
     }
   },
   "files": [

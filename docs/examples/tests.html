@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Arbitrary Tests</title>
+    <style>
+        body{ margin: 0px; font-family: Arial;}
+        #container{ width: 761px; margin: 0px auto;}
+        h3{ margin: 10px 0px; }
+        h4{ margin: 5px 0px; color: #7f7f7f;}
+        canvas{
+            padding: 1px;
+        }
+
+        #header{
+            width: 500px;
+            margin: 0px auto;
+            display: block;
+        }
+        #header{
+            font-size: 17px;
+            line-height: 96px;
+        }
+        #header img{
+            width: 96px;
+            height: 96px;
+            display: block;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+
+    <div id='container'>
+
+        <a href="https://github.com/francoislaberge/arbitrary" id="header">
+            <img src="images/github.png"/>
+            <span>github.com/francoislaberge/arbitrary</span>
+        </a>
+    </div>
+
+    <script src="../dist/index.js" type="text/javascript"></script>
+    <script src="algorithms.js" type="text/javascript"></script>
+    <script src="generators.js" type="text/javascript"></script>
+
+    <script>
+        var pixelSize = 3;
+
+        var samples1D = 250;
+        var range1D = 32;
+
+        h3("1D Samples");
+        generators.forEach( function(generator, name) {
+            h4('Using: ' + name);
+            generate1D(generator, samples1D, range1D, pixelSize);
+        });
+
+        h3("2D Samples");
+        var samples2D = 100;
+        var range2D = 50;
+        generators.forEach( function(generator, name) {
+            h4('Using: ' + name);
+            for(var i = 0; i < 5; i++){
+                generate2D(generator, samples2D, range2D, pixelSize);
+            }
+        });
+
+        h3("Random Walk");
+        var samples2D = 255;
+        var range2D = 50;
+        generators.forEach( function(generator, name) {
+            h4('Using: ' + name);
+            for(var i = 0; i < 5; i++){
+                randomWalk(generator, samples2D, range2D, pixelSize);
+            }
+        });
+
+        h3("Random Tree");
+        var treeRange = 50 * pixelSize;
+        generators.forEach( function(generator, name) {
+            h4('Using: ' + name);
+            for(var i = 0; i < 5; i++){
+                randomTree(generator, treeRange);
+            }
+        });
+
+
+</script>
+</body>
+</html>
