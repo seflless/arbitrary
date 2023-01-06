@@ -22,7 +22,7 @@ See Demos:
 
 ## Screenshots
 
-<img src="http://seflless.github.io/arbitrary/images/screenshot.png" width="100%"/>
+<img src="docs/images/demos.gif" width="100%"/>
 
 # Installation
 
