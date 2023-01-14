@@ -1,7 +1,5 @@
 # Overview
 
-<a href="https://travis-ci.org/francoislaberge/arbitrary"><img src="https://api.travis-ci.org/francoislaberge/arbitrary.svg" alt="Build Status"></a>
-
 A forward and backwards deterministic random number generator.
 
 I started this project to explore simulations that can be run forwards and backwards, but I never ended up building anything sophisticated. To really explore this idea more constructs to easily design/compose programs that run in both directions would be required. Examples: loops, conditionals, and functions would need to run in both directions without having to write a forward and backwards version by hand.
